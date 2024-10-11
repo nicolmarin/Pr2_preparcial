@@ -128,7 +128,6 @@ public class ClienteViewController {
                 mostrarMensaje(TITULO_CLIENTE_NO_AGREGADO, HEADER, BODY_CLIENTE_NO_AGREGADO,Alert.AlertType.ERROR);
             }
         }else{
-            //mensaje de notificacion de campos incompletos
             mostrarMensaje(TITULO_INCOMPLETO, HEADER, BODY_INCOMPLETO,Alert.AlertType.WARNING);
         }
     }

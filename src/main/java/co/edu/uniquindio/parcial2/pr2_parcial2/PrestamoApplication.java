@@ -10,9 +10,10 @@ import java.io.IOException;
 public class PrestamoApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(PrestamoApplication.class.getResource("Admin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PrestamoApplication.class.getResource("Cliente.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("App Prestamo!");
+        stage.setTitle("App PrestamoUQ!");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
