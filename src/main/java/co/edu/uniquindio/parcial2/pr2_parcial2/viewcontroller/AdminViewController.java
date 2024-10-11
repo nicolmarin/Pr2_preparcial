@@ -32,10 +32,19 @@ public class AdminViewController {
     private ListView<?> listObjetosMayorPrestamos11;
 
     @FXML
+    private Button btnConsultarClMenorPrestamos;
+
+    @FXML
     private Button btnConsultarClientesMayorPrestamos2;
 
     @FXML
     private TextField txtBuscarObjetoID;
+
+    @FXML
+    private TextField txtRangoCMenorPrestamos;
+
+    @FXML
+    private ListView<?> listCMenorPrestamos;
 
     @FXML
     private TextField txtRangoOMayorPrestamos;
@@ -47,7 +56,15 @@ public class AdminViewController {
     private ListView<?> listObjetosMayorPrestamos1;
 
     @FXML
+    private TextField txtCantidadObjetosMPrestamos1;
+
+    @FXML
     private Button btnConsultarObjetosXEstado;
+
+    @FXML
+    void onConsultarCMenorPrestamos(ActionEvent event) {
+
+    }
 
     @FXML
     void onConsultarObjetosMayorPrestamos(ActionEvent event) {
