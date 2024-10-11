@@ -6,9 +6,50 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="co.edu.uniquindio.parcial2.pr2_parcial2.Admin"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="979.0" prefWidth="1203.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.parcial2.pr2_parcial2.Admin">
+   <children>
+      <Pane prefHeight="921.0" prefWidth="1243.0" style="-fx-background-color: #CECECE;">
+         <children>
+            <TableView layoutX="194.0" layoutY="645.0" prefHeight="278.0" prefWidth="770.0">
+              <columns>
+                <TableColumn prefWidth="99.0" text="NOMBRE" />
+                <TableColumn prefWidth="96.0" text="APELLIDO" />
+                  <TableColumn prefWidth="86.0" text="CEDULA" />
+                  <TableColumn prefWidth="123.0" text="PRESTAMOS" />
+              </columns>
+            </TableView>
+            <Label layoutX="35.0" layoutY="14.0" text="Objetos mayor demanda" />
+            <TextField depthTest="DISABLE" layoutX="42.0" layoutY="59.0" style="-fx-background-radius: 50;" text="Rango maximo" />
+            <Button layoutX="101.0" layoutY="422.0" mnemonicParsing="false" style="-fx-background-radius: 50;" text="Consultar " />
+            <Label layoutX="376.0" layoutY="401.0" text="Buscar objeto por CC" />
+            <TextField depthTest="DISABLE" layoutX="357.0" layoutY="438.0" style="-fx-background-radius: 50;" text="Cedula" />
+            <Button layoutX="416.0" layoutY="491.0" mnemonicParsing="false" style="-fx-background-radius: 50;" text="Consultar " />
+            <ListView layoutX="54.0" layoutY="107.0" prefHeight="271.0" prefWidth="206.0" style="-fx-background-radius: 50;" />
+            <Label layoutX="101.0" layoutY="387.0" text="Lista objetos " />
+            <ListView layoutX="357.0" layoutY="46.0" prefHeight="278.0" prefWidth="206.0" style="-fx-background-radius: 50;" />
+            <Label layoutX="340.0" layoutY="14.0" text="Clientes con mayor prestamos" />
+            <Button layoutX="408.0" layoutY="331.0" mnemonicParsing="false" style="-fx-background-radius: 50;" text="Consultar " />
+            <TableView layoutX="622.0" layoutY="59.0" prefHeight="292.0" prefWidth="453.0">
+               <columns>
+                  <TableColumn prefWidth="99.0" text="NOMBRE" />
+                  <TableColumn prefWidth="96.0" text="ESTADO" />
+               </columns>
+            </TableView>
+            <Separator layoutX="264.0" layoutY="1.0" orientation="VERTICAL" prefHeight="636.0" prefWidth="39.0" />
+            <Separator layoutY="637.0" prefHeight="7.0" prefWidth="1241.0" style="-fx-background-color: #FFFFFF;" />
+            <Separator layoutX="572.0" layoutY="9.0" orientation="VERTICAL" prefHeight="636.0" prefWidth="39.0" />
+            <Label layoutX="695.0" layoutY="14.0" text="Objetos disponibles y no disponibles" />
+            <Button layoutX="788.0" layoutY="368.0" mnemonicParsing="false" style="-fx-background-radius: 50;" text="Consultar " />
+            <Label layoutX="50.0" layoutY="464.0" text="objetos segun su estado" />
+            <Button layoutX="100.0" layoutY="569.0" mnemonicParsing="false" style="-fx-background-radius: 50;" text="Consultar " />
+            <MenuButton layoutX="96.0" layoutY="491.0" mnemonicParsing="false" style="-fx-background-radius: 50;" text="ESTADO">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
+         </children>
+      </Pane>
+   </children>
 </AnchorPane>
