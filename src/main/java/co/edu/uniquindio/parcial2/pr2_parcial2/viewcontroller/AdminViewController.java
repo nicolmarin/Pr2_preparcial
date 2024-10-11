@@ -3,84 +3,69 @@ package co.edu.uniquindio.parcial2.pr2_parcial2.viewcontroller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class AdminViewController {
 
     @FXML
-    private TextField txtBuscarXCedula;
+    private TextField txtCantidadClientesMayorPrestamos;
 
     @FXML
-    private TextField txtCantidadObjetosEstado;
+    private TextField txtRangoCMayorPrestamos2;
 
     @FXML
-    private MenuButton btnMenuEstado;
+    private Button btnConsultarObjetosMayorPrestamos;
 
     @FXML
-    private ListView<?> listEstadoObjeto;
+    private Button btnConsultarObjetosID;
 
     @FXML
-    private TextField txtCantidadOMayorDemanda;
+    private TextField txtRangoObjetoXID;
 
     @FXML
-    private Button btnMayorPrestamos;
+    private TableColumn<?, ?> tabObjetosDND;
 
     @FXML
-    private ListView<?> listMayorPrestamos;
+    private TextField txtCantidadObjetosMPrestamos;
 
     @FXML
-    private Button btnMayorDemanda;
+    private ListView<?> listObjetosMayorPrestamos11;
 
     @FXML
-    private Button btnObjetosDND;
+    private Button btnConsultarClientesMayorPrestamos2;
 
     @FXML
-    private TextField txtCantidadODND;
+    private TextField txtBuscarObjetoID;
 
     @FXML
-    private TableView<?> tbClientesPrestamos;
+    private TextField txtRangoOMayorPrestamos;
 
     @FXML
-    private Button btnConsultarXCedula;
+    private ListView<?> listObjetosMayorPrestamos;
 
     @FXML
-    private TextField txtRangoMaximo;
+    private ListView<?> listObjetosMayorPrestamos1;
 
     @FXML
-    private ListView<?> listMayorDemanda;
+    private Button btnConsultarObjetosXEstado;
 
     @FXML
-    private TextField txtCantidadClientesMayorP;
-
-    @FXML
-    private TableView<?> tbObjetos;
-
-    @FXML
-    void onMayorDemanda(ActionEvent event) {
+    void onConsultarObjetosMayorPrestamos(ActionEvent event) {
 
     }
 
     @FXML
-    void onConsultarXCedula(ActionEvent event) {
+    void onConsultarObjetosID(ActionEvent event) {
 
     }
 
     @FXML
-    void onMayorPrestamos(ActionEvent event) {
+    void onConsultarClientesMayorPrestamos(ActionEvent event) {
 
     }
 
     @FXML
-    void onObjetosDND(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onMenuEstado(ActionEvent event) {
+    void onConsultarObjetosXEstado(ActionEvent event) {
 
     }
 
