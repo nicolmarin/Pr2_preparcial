@@ -1,6 +1,8 @@
 package co.edu.uniquindio.parcial2.pr2_parcial2.model;
 
 
+import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ObjetoDto;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,13 @@ public class PrestamoObjeto {
 
     private String nombre;
 
+    public List<Objeto> getListaObjetos() {
+        return listaObjetos;
+    }
+
+    public void setListaObjetos(List<Objeto> listaObjetos) {
+        this.listaObjetos = listaObjetos;
+    }
 
     public PrestamoObjeto() {
     }
@@ -99,4 +108,27 @@ public class PrestamoObjeto {
 
         return resultado;
     }
+
+    public boolean crearObjeto(Objeto nuevoObjeto){
+        Objeto ObjetoEncontrado = obtenerObjeto(nuevoObjeto.getIdObjeto());
+        if(ObjetoEncontrado == null){
+            getListaObjetos().add(nuevoObjeto);
+            return true;
+        }else{
+            return  false;
+        }
+    }
+
+    private Objeto obtenerObjeto(String idObjeto) {
+        Objeto objeto = null;
+        for (Objeto objeto1: getListaObjetos()) {
+            if(objeto1.getIdObjeto().equalsIgnoreCase(idObjeto)){
+                objeto = objeto1;
+                break;
+            }
+        }
+
+        return objeto;
+    }
+
 }

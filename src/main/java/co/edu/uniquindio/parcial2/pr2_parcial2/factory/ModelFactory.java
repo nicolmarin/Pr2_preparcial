@@ -1,8 +1,10 @@
 package co.edu.uniquindio.parcial2.pr2_parcial2.factory;
 
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ClienteDto;
+import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ObjetoDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.mappers.PrestamoMappingImpl;
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.Cliente;
+import co.edu.uniquindio.parcial2.pr2_parcial2.model.Objeto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.PrestamoObjeto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.service.IModelFactoryService;
 import co.edu.uniquindio.parcial2.pr2_parcial2.service.IPrestamoMapping;
@@ -38,5 +40,12 @@ public class ModelFactory implements IModelFactoryService {
         Cliente cliente = mapper.clienteDtoToCliente(clienteDto);
         return prestamoObjeto.crearCliente(cliente);
         //return prestamoObjeto.crearCliente(mapper.clienteDtoToCliente(clienteDto));
+    }
+    @Override
+    public List<ObjetoDto> obtenerObjetos(){return mapper.getObjetosDto(prestamoObjeto.getListaObjetos());}
+    @Override
+    public boolean agregarObjeto(ObjetoDto objetoDto){
+        Objeto objeto = mapper.objetoDtoToObjeto(objetoDto);
+        return prestamoObjeto.crearObjeto(objeto);
     }
 }

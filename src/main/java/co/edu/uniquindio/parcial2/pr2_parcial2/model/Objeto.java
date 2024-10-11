@@ -1,20 +1,36 @@
 package co.edu.uniquindio.parcial2.pr2_parcial2.model;
 
+import co.edu.uniquindio.parcial2.pr2_parcial2.model.builder.ObjetoBuilder;
+
 public class Objeto {
     private String nombre;
     private String idObjeto;
     PrestamoObjeto ownedByPrestamoUq;
+    private String estado;
 
-    public Objeto() {
-    }
 
-    public Objeto(String nombre, String idObjeto) {
+
+    public Objeto(String nombre, String idObjeto,PrestamoObjeto ownedByPrestamoUq,String estado) {
         this.nombre = nombre;
         this.idObjeto = idObjeto;
+        this.ownedByPrestamoUq = ownedByPrestamoUq;
+        this.estado = estado;
     }
 
     public Objeto(String nombre) {
         this.nombre = nombre;
+    }
+
+    public static ObjetoBuilder builder() {
+        return new ObjetoBuilder();
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getNombre() {

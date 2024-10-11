@@ -33,10 +33,28 @@ public class DataUtil {
                 .edad(40)
                 .email("jsjsj3@gmail.com")
                 .build();
+        Cliente cliente4 = Cliente.builder()
+                .cedula("24567")
+                .nombre("Maria luisa")
+                .apellido("marin Pereira")
+                .direccion("Salento")
+                .edad(15)
+                .email("mluisamP15@gmail.com")
+                .build();
+        Cliente cliente5 = Cliente.builder()
+                .cedula("89756")
+                .nombre("Nicol Dayana")
+                .apellido("Moreno")
+                .direccion("Pereira")
+                .edad(18)
+                .email("nicold.marinm@gmail.com")
+                .build();
 
         prestamoObjeto.getListaClientes().add(cliente1);
         prestamoObjeto.getListaClientes().add(cliente2);
         prestamoObjeto.getListaClientes().add(cliente3);
+        prestamoObjeto.getListaClientes().add(cliente4);
+        prestamoObjeto.getListaClientes().add(cliente5);
 
         return prestamoObjeto;
     }

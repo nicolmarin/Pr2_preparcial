@@ -1,7 +1,10 @@
 package co.edu.uniquindio.parcial2.pr2_parcial2.mapping.mappers;
 
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ClienteDto;
+import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ObjetoDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.Cliente;
+import co.edu.uniquindio.parcial2.pr2_parcial2.model.Objeto;
+import co.edu.uniquindio.parcial2.pr2_parcial2.model.builder.ObjetoBuilder;
 import co.edu.uniquindio.parcial2.pr2_parcial2.service.IPrestamoMapping;
 
 import java.util.ArrayList;
@@ -23,6 +26,7 @@ public class PrestamoMappingImpl implements IPrestamoMapping {
         return listaClientesDto;
     }
 
+
     @Override
     public ClienteDto clienteToClienteDto(Cliente cliente) {
         return new ClienteDto(
@@ -42,5 +46,33 @@ public class PrestamoMappingImpl implements IPrestamoMapping {
                 .email(clienteDto.email())
                 .direccion(clienteDto.direccion())
                 .build();
+    }
+
+    @Override
+    public List<ObjetoDto> getObjetosDto(List<Objeto> listaObjetos) {
+        if(listaObjetos == null){
+            return null;
+        }
+        List<ObjetoDto> listaObjetosDto = new ArrayList<ObjetoDto>(listaObjetos.size());
+        for (Objeto objeto : listaObjetos) {
+            listaObjetosDto.add(objetoToObjetoDto(objeto));
+        }
+
+        return listaObjetosDto;
+    }
+
+    @Override
+    public ObjetoDto objetoToObjetoDto(Objeto objeto) {
+        return new ObjetoDto(objeto.getIdObjeto(),
+                objeto.getNombre(),
+                objeto.getOwnedByPrestamoUq(),
+                objeto.getEstado());
+    }
+
+    @Override
+    public Objeto objetoDtoToObjeto(ObjetoDto objetoDto) {
+        return Objeto.builder().nombre(objetoDto.nombre())
+                .idObjeto(objetoDto.idObjeto())
+                .ownedByPrestamoUq(objetoDto.ownedByPrestamoUq()).build();
     }
 }
