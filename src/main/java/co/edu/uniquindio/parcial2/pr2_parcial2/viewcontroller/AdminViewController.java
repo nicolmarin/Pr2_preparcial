@@ -1,13 +1,21 @@
 package co.edu.uniquindio.parcial2.pr2_parcial2.viewcontroller;
 
+import co.edu.uniquindio.parcial2.pr2_parcial2.controller.AdminController;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ObjetoDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.Objeto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.PrestamoObjeto;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class AdminViewController {
+    AdminController adminController;
+    ObservableList<ObjetoDto> listaObjetos= FXCollections.observableArrayList();
+    ObjetoDto objetoSeleccionado;
 
     @FXML
     private TextField txtCantidadClientesMayorPrestamos;
@@ -94,6 +102,38 @@ public class AdminViewController {
     @FXML
     void onConsultarClientesMayorPrestamos(ActionEvent event) {
 
+    }
+    @FXML
+    void initialize(){
+        adminController= new AdminController() ;
+        initView();
+
+    }
+
+    private void initView() {
+        initDataBinding();
+        ObtenerObjetos();
+        tabObjetosDND.getItems().clear();
+        tabObjetosDND.setItems(listaObjetos);
+        listenerSelection();
+    }
+
+    private void listenerSelection() {
+        tabObjetosDND.getSelectionModel().selectedItemProperty().addListener((obs,oldSelection,newSelection) -> {
+            objetoSeleccionado= newSelection;
+            mostrarInformacionObjeto(objetoSeleccionado);
+        });
+    }
+
+    private void mostrarInformacionObjeto(ObjetoDto objetoSeleccionado) {
+        if(objetoSeleccionado!=null){
+            tcNombreODND
+        }
+    }
+
+    private void initDataBinding() {
+        tcNombreODND.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
+        tcObjetosDND.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().estado()));
     }
 
 }
