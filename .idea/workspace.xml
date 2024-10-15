@@ -5,31 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4181a8c6-de37-4202-b2a8-ca059425fb7e" name="Changes" comment="Se crea proyecto JavaFx para el parcial 2">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/mapping/dto/EmpleadoDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/mapping/dto/PrestamoDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/builder/EmpleadoBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/builder/PrestamoBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/controller/ClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/controller/ClienteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/factory/ModelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/factory/ModelFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/mapping/dto/ClienteDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/mapping/dto/ClienteDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/mapping/dto/ObjetoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/mapping/dto/ObjetoDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/mapping/mappers/PrestamoMappingImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/mapping/mappers/PrestamoMappingImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/Empleado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/Prestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/Prestamo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/PrestamoObjeto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/PrestamoObjeto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/builder/ClienteBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/builder/ClienteBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/builder/ObjetoBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/builder/ObjetoBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/service/IModelFactoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/service/IModelFactoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/utils/AdminConstantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/utils/AdminConstantes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/utils/DataUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/utils/DataUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/viewcontroller/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/viewcontroller/AdminViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/viewcontroller/ClienteViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/viewcontroller/ClienteViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/viewcontroller/PrestamoAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/viewcontroller/PrestamoAppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/parcial2/pr2_parcial2/Admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/parcial2/pr2_parcial2/Admin.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +108,7 @@
       <workItem from="1728877434906" duration="3000" />
       <workItem from="1728941755049" duration="4742000" />
       <workItem from="1728957083619" duration="24524000" />
-      <workItem from="1729015345577" duration="6578000" />
+      <workItem from="1729015345577" duration="7250000" />
     </task>
     <task id="LOCAL-00001" summary="Se crea proyecto JavaFx para el parcial 2">
       <option name="closed" value="true" />

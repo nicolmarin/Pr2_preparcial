@@ -82,7 +82,7 @@ public class AdminViewController {
         if (validarCampoNoVacio(id, TITULO_OBJETO_INGRESE_VALOR)) {
             ObjetoDto objetoDto = adminController.consultarObjetoPorID(id);
             if (objetoDto != null) {
-                listaObjetosPorID.setAll(objetoDto);
+                listaObjetosPorID.add(objetoDto);
                 listBuscarPorID.setItems(listaObjetosPorID);
                 mostrarMensaje("Objeto Encontrado", "Información", objetoDto.toString(), Alert.AlertType.INFORMATION);
             } else {
