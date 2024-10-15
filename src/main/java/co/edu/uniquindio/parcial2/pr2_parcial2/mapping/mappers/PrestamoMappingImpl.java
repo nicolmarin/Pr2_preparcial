@@ -115,7 +115,7 @@ public class PrestamoMappingImpl implements IPrestamoMapping {
     public EmpleadoDto empleadoToEmpleadoDto(Empleado empleado) {
         if (empleado == null) {
             return null;
-        } 
+        }
         return new EmpleadoDto(
                 empleado.getNombre(),
                 empleado.getApellido(),
