@@ -5,11 +5,17 @@ public class Empleado extends  Persona{
 
     public Empleado() {
     }
-
+    public Empleado(
+            String idEmpleado,
+            String nombre,
+            String apellido,
+            String cargo,
+            String email,
+            String telefono) {
+    }
     public PrestamoObjeto getOwnedByPrestamoUq() {
         return ownedByPrestamoUq;
     }
-
     public void setOwnedByPrestamoUq(PrestamoObjeto ownedByPrestamoUq) {
         this.ownedByPrestamoUq = ownedByPrestamoUq;
     }

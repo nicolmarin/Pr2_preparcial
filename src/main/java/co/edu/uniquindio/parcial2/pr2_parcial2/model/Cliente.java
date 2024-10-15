@@ -3,8 +3,6 @@ package co.edu.uniquindio.parcial2.pr2_parcial2.model;
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.builder.ClienteBuilder;
 
 public class Cliente {
-
-    // Atributos del cliente
     private String cedula;
     private String nombreCliente;
     private String apellido;
@@ -15,7 +13,6 @@ public class Cliente {
     private int edad;
     private int cantidadPrestamos;
 
-    // Constructor principal
     public Cliente(String cedula,
                    String nombreCliente,
                    String apellido,
@@ -32,15 +29,24 @@ public class Cliente {
         this.telefonoCelular = telefonoCelular;
         this.direccion = direccion;
         this.edad = edad;
-        this.cantidadPrestamos = 0; // Inicialmente, 0 préstamos
+        this.cantidadPrestamos = 0;
     }
-
+    // Método para incrementar la cantidad de préstamos
+    public void incrementarCantidadPrestamos() {
+        this.cantidadPrestamos++;
+    }
+    // Método toString para representar el objeto Cliente como una cadena
+    @Override
+    public String toString() {
+        return String.format("Cliente{cedula='%s', nombreCliente='%s', apellido='%s', email='%s', telefonoFijo='%s', telefonoCelular='%s', direccion='%s', edad=%d, cantidadPrestamos=%d}",
+                cedula, nombreCliente, apellido, email, telefonoFijo, telefonoCelular, direccion, edad, cantidadPrestamos);
+    }
     // Método estático para obtener el builder del cliente
     public static ClienteBuilder builder() {
         return new ClienteBuilder();
     }
 
-    // Getters y setters
+    // --------------------------------- Getters ---------------------------------
     public String getCedula() {
         return cedula;
     }
@@ -65,21 +71,9 @@ public class Cliente {
     public int getEdad() {
         return edad;
     }
-
     // Método para obtener la cantidad de préstamos
     public int getCantidadPrestamos() {
         return cantidadPrestamos;
     }
-
-    // Método para incrementar la cantidad de préstamos
-    public void incrementarCantidadPrestamos() {
-        this.cantidadPrestamos++;
-    }
-
-    // Método toString para representar el objeto Cliente como una cadena
-    @Override
-    public String toString() {
-        return String.format("Cliente{cedula='%s', nombreCliente='%s', apellido='%s', email='%s', telefonoFijo='%s', telefonoCelular='%s', direccion='%s', edad=%d, cantidadPrestamos=%d}",
-                cedula, nombreCliente, apellido, email, telefonoFijo, telefonoCelular, direccion, edad, cantidadPrestamos);
-    }
+    // ---------------------------------------------------------------------------------------------
 }

@@ -34,10 +34,10 @@
                <children>
                    <TextField fx:id="txtRangoOMayorPrestamos" layoutX="34.0" layoutY="69.0" prefHeight="40.0" prefWidth="90.0" promptText="Rango" style="-fx-background-radius: 50;" />
                   <Button fx:id="btnConsultarObjetosMayorPrestamos" layoutX="139.0" layoutY="76.0" mnemonicParsing="false" onAction="#onConsultarObjetosMayorPrestamos" prefWidth="80.0" style="-fx-background-radius: 50;" text="Consultar" />
-                  <ListView fx:id="listObjetosMayorPrestamos" layoutX="34.0" layoutY="125.0" prefHeight="230.0" prefWidth="197.0" />
+                  <ListView fx:id="listObjetosMayorPrestamos" layoutX="11.0" layoutY="125.0" prefHeight="230.0" prefWidth="220.0" />
                   <TextField fx:id="txtCantidadClientesMayorPrestamos" layoutX="535.0" layoutY="69.0" prefHeight="40.0" prefWidth="90.0" promptText="Rango" style="-fx-background-radius: 50;" />
                   <Button fx:id="btnConsultarClientesMayorPrestamos2" layoutX="651.0" layoutY="77.0" mnemonicParsing="false" onAction="#onConsultarClientesMayorPrestamos" prefWidth="80.0" style="-fx-background-radius: 50;" text="Consultar" />
-                  <ListView fx:id="listBuscarClientesMayorPrestamos" layoutX="535.0" layoutY="119.0" prefHeight="230.0" prefWidth="205.0" />
+                  <ListView fx:id="listBuscarClientesMayorPrestamos" layoutX="552.0" layoutY="119.0" prefHeight="230.0" prefWidth="220.0" />
                   <SplitPane layoutX="1.0" layoutY="481.0" orientation="VERTICAL" prefHeight="351.0" prefWidth="1258.0" />
                   <Label layoutX="44.0" layoutY="35.0" text="Objetos Mayor prestamos">
                      <font>
@@ -49,9 +49,9 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Pane layoutX="266.0" layoutY="35.0" prefHeight="336.0" prefWidth="237.0">
+                  <Pane layoutX="266.0" layoutY="35.0" prefHeight="336.0" prefWidth="253.0">
                      <children>
-                        <ListView fx:id="listBuscarPorID" layoutX="16.0" layoutY="85.0" prefHeight="230.0" prefWidth="205.0" />
+                        <ListView fx:id="listBuscarPorID" layoutX="-4.0" layoutY="85.0" prefHeight="230.0" prefWidth="251.0" />
                         <TextField fx:id="txtBuscarObjetoID" layoutX="9.0" layoutY="34.0" prefHeight="40.0" prefWidth="90.0" promptText="Ingrese ID objeto" style="-fx-background-radius: 50;" />
                         <Button fx:id="btnConsultarObjetosID" layoutX="127.0" layoutY="42.0" mnemonicParsing="false" onAction="#onConsultarObjetosID" prefWidth="80.0" style="-fx-background-radius: 50;" text="Consultar" />
                         <Label layoutX="54.0" text="Buscar Objeto por ID">

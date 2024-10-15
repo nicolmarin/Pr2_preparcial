@@ -1,5 +1,7 @@
 package co.edu.uniquindio.parcial2.pr2_parcial2.model;
 
+import co.edu.uniquindio.parcial2.pr2_parcial2.model.builder.PrestamoBuilder;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,9 +16,24 @@ public class Prestamo {
     List<Objeto> listaObjetosAsociados = new ArrayList<>();
 
 
+    public static PrestamoBuilder builder() {
+        return new PrestamoBuilder();
+    }
+
     public Prestamo() {
     }
 
+    public Prestamo(String numeroPrestamo, Date fechaPrestamo, Date fechaEntrega, String descripcion, Empleado empleadoAsociado, Cliente clienteAsociado, List<Objeto> listaObjetosAsociados) {
+        this.numeroPrestamo = numeroPrestamo;
+        this.fechaPrestamo = fechaPrestamo;
+        this.fechaEntrega = fechaEntrega;
+        this.descripcion = descripcion;
+        this.empleadoAsociado = empleadoAsociado;
+        this.clienteAsociado = clienteAsociado;
+        this.listaObjetosAsociados = listaObjetosAsociados;
+    }
+
+    // ------------------------------------ Getters y Setters ------------------------------------
     public String getNumeroPrestamo() {
         return numeroPrestamo;
     }

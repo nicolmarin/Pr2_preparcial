@@ -9,4 +9,3 @@ public record ObjetoDto (
         PrestamoObjeto ownedByPrestamoUq
 ) {
 }
-

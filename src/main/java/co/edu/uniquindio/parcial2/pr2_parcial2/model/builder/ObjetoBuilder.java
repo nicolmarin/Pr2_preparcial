@@ -29,4 +29,3 @@ public class ObjetoBuilder {
         return new Objeto(nombre, idObjeto,ownedByPrestamoUq,estado);
     }
 }
-

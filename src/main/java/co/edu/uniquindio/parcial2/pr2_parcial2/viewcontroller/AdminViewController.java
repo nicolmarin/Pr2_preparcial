@@ -3,7 +3,6 @@ package co.edu.uniquindio.parcial2.pr2_parcial2.viewcontroller;
 import co.edu.uniquindio.parcial2.pr2_parcial2.controller.AdminController;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ClienteDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ObjetoDto;
-import co.edu.uniquindio.parcial2.pr2_parcial2.model.Objeto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,7 +21,7 @@ public class AdminViewController {
     private final ObservableList<ObjetoDto> listaObjetosMayorPrestamos = FXCollections.observableArrayList();
     private ObjetoDto objetoSeleccionado;
 
-    //----------------------------- List Views -----------------------------
+    // ----------------------------- List Views -----------------------------
     @FXML
     private ListView<ObjetoDto> listObjetos;
     @FXML
@@ -32,7 +31,7 @@ public class AdminViewController {
     @FXML
     private ListView<ObjetoDto> listObjetosMayorPrestamos;
 
-    //----------------------------- Text Fields -----------------------------
+    // ----------------------------- Text Fields -----------------------------
     @FXML
     private TextField txtEstado;
     @FXML
@@ -46,7 +45,7 @@ public class AdminViewController {
     @FXML
     private TextField txtCantidadClientesMayorPrestamos;
 
-    //----------------------------- Buttons -----------------------------
+    // ----------------------------- Buttons -----------------------------
     @FXML
     private Button btnConsultarObjetosMayorPrestamos;
     @FXML
@@ -56,12 +55,12 @@ public class AdminViewController {
     @FXML
     private Button btnConsultarClientesMayorPrestamos;
 
-    //----------------------------- On Actions -----------------------------
-
+    // ----------------------------- On Actions -----------------------------
     @FXML
     void onConsultarObjetosXEstado(ActionEvent event) {
         consultarObjetoXEstado();
     }
+
     @FXML
     void onConsultarClientesMayorPrestamos(ActionEvent event) {
         consultarClientesMayorPrestamos();
@@ -74,71 +73,69 @@ public class AdminViewController {
 
     @FXML
     void onConsultarObjetosID(ActionEvent event) {
-       consultarObjetoID();
+        consultarObjetoID();
     }
-    //-------------------------------------------------------------------
 
+    //-------------------------------------------------------------------
     private void consultarObjetoID() {
-        if (!txtBuscarObjetoID.getText().isEmpty()) {
-            Objeto objeto = adminController.consultarObjetoPorID(txtBuscarObjetoID.getText());
-            if (objeto != null) {
-                ObjetoDto objetoDto = new ObjetoDto(objeto.getIdObjeto(), objeto.getNombre(), objeto.getEstado(), objeto.getOwnedByPrestamoUq());
-                listaObjetosPorID.setAll(FXCollections.observableArrayList(objetoDto));
+        String id = txtBuscarObjetoID.getText();
+        if (validarCampoNoVacio(id, TITULO_OBJETO_INGRESE_VALOR)) {
+            ObjetoDto objetoDto = adminController.consultarObjetoPorID(id);
+            if (objetoDto != null) {
+                listaObjetosPorID.setAll(objetoDto);
                 listBuscarPorID.setItems(listaObjetosPorID);
-                mostrarMensaje("Objeto Encontrado", "Información", objeto.toString(), Alert.AlertType.INFORMATION);
+                mostrarMensaje("Objeto Encontrado", "Información", objetoDto.toString(), Alert.AlertType.INFORMATION);
             } else {
                 mostrarMensaje(TITULO_OBJETO_NO_ENCONTRADO, HEADER, BODY_ID_NO_ENCONTRADO, Alert.AlertType.ERROR);
             }
-        } else {
-            mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_ID_NO_ENCONTRADO, Alert.AlertType.ERROR);
         }
     }
-    private void consultarObjetosMayorPrestamos(){
-        if (!txtRangoOMayorPrestamos.getText().isEmpty()) {
-            listaObjetosMayorPrestamos.setAll(adminController.consultarObjetosMayorPrestamos(txtRangoOMayorPrestamos.getText()));
+
+    private void consultarObjetosMayorPrestamos() {
+        String rangoTexto = txtRangoOMayorPrestamos.getText();
+        if (validarCampoNoVacio(rangoTexto, TITULO_OBJETO_INGRESE_VALOR)) {
+            listaObjetosMayorPrestamos.setAll(adminController.consultarObjetosMayorPrestamos(String.valueOf(Integer.parseInt(rangoTexto))));
             listObjetosMayorPrestamos.setItems(listaObjetosMayorPrestamos);
         } else {
-            mostrarMensaje(TITULO_OBJETO_NO_ENCONTRADO, HEADER, BODY_INGRESE_RANGO, Alert.AlertType.INFORMATION);
+            mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_INGRESE_RANGO, Alert.AlertType.INFORMATION);
         }
     }
+
     private void consultarClientesMayorPrestamos() {
         String cantidadTexto = txtCantidadClientesMayorPrestamos.getText();
-        if (!cantidadTexto.isEmpty()) {
+        if (validarCampoNoVacio(cantidadTexto, BODY_INGRESE_CANTIDAD_CLIENTES)) {
             try {
                 int cantidadPrestamos = Integer.parseInt(cantidadTexto);
                 List<ClienteDto> clientes = adminController.consultarClientesMayorPrestamos(cantidadPrestamos);
-
-                ObservableList<ClienteDto> observableClientes = FXCollections.observableArrayList(clientes);
-                listaClientesMayorPrestamos.setAll(observableClientes);
+                listaClientesMayorPrestamos.setAll(FXCollections.observableArrayList(clientes));
                 listBuscarClientesMayorPrestamos.setItems(listaClientesMayorPrestamos);
             } catch (NumberFormatException e) {
-                mostrarMensaje("Entrada no válida", "Error", "Por favor, ingrese un número válido", Alert.AlertType.ERROR);
+                mostrarMensaje("Entrada no válida", "Error", BODY_NUMERO_NO_VALIDO, Alert.AlertType.ERROR);
             }
-        } else {
-            mostrarMensaje("Cantidad no ingresada", "Error", "Por favor, ingrese la cantidad de clientes", Alert.AlertType.ERROR);
         }
     }
+
     private void consultarObjetoXEstado() {
-        if (!txtEstado.getText().isEmpty()) {
-            listaObjetos.setAll(adminController.consultarObjetosPorEstado(txtEstado.getText()));
+        String estado = txtEstado.getText();
+        if (validarCampoNoVacio(estado, TITULO_OBJETO_INGRESE_VALOR)) {
+            listaObjetos.setAll(adminController.consultarObjetosPorEstado(estado));
             listObjetos.setItems(listaObjetos);
         } else {
             mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_INGRESE_ESTADO, Alert.AlertType.INFORMATION);
         }
     }
 
-    //----------------------------- Métodos de inicialización -----------------------------
+    // ----------------------------- Métodos de inicialización -----------------------------
     @FXML
     void initialize() {
         adminController = new AdminController();
         initDataBinding();
         cargarObjetos();
         listenerSelection();
-
     }
 
     private void cargarObjetos() {
-        listaObjetos.setAll(adminController.obtenerObjetoss());
+        listaObjetos.setAll(adminController.obtenerObjetos());
         listObjetos.setItems(listaObjetos);
     }
 
@@ -197,5 +194,13 @@ public class AdminViewController {
         alert.setHeaderText(header);
         alert.setContentText(contenido);
         alert.showAndWait();
+    }
+
+    private boolean validarCampoNoVacio(String texto, String tituloError) {
+        if (texto.isEmpty()) {
+            mostrarMensaje(tituloError, HEADER, BODY_INCOMPLETO, Alert.AlertType.ERROR);
+            return false;
+        }
+        return true;
     }
 }

@@ -1,8 +1,7 @@
 package co.edu.uniquindio.parcial2.pr2_parcial2.model;
 
-import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ObjetoDto;
-
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PrestamoObjeto extends Objeto {
@@ -13,11 +12,11 @@ public class PrestamoObjeto extends Objeto {
     private List<Prestamo> listaPrestamos = new ArrayList<>();
 
     public PrestamoObjeto(String idObjeto, String nombre, String estado) {
-        super(idObjeto, nombre, estado); // Llama al constructor de la clase base Objeto
+        super(idObjeto, nombre, estado);
     }
 
     public PrestamoObjeto(List<Cliente> listaClientes, List<Empleado> listaEmpleados, List<Objeto> listaObjetos) {
-        super("", "", ""); // Llama al constructor vacío de la clase base Objeto, puedes ajustarlo según tu lógica
+        super("", "", "");
         this.listaClientes = listaClientes;
         this.listaEmpleados = listaEmpleados;
         this.listaObjetos = listaObjetos;
@@ -97,7 +96,11 @@ public class PrestamoObjeto extends Objeto {
     // Método para crear un nuevo objeto
     public boolean crearObjeto(String idObjeto, String nombre, String estado) {
         if (obtenerObjeto(idObjeto) == null) {
-            Objeto nuevoObjeto = new Objeto(idObjeto, nombre, estado); // Asumiendo que Objeto tiene un constructor adecuado
+            Objeto nuevoObjeto = Objeto.builder()
+                    .idObjeto(idObjeto)
+                    .nombre(nombre)
+                    .estado(estado)
+                    .build();
             listaObjetos.add(nuevoObjeto);
             return true;
         }
@@ -185,5 +188,37 @@ public class PrestamoObjeto extends Objeto {
             }
         }
         return clientesFiltrados;
+    }
+
+    // Método para crear un nuevo préstamo
+    public boolean crearPrestamo(String numeroPrestamo, Date fechaPrestamo, Date fechaEntrega, String descripcion, String clienteCedula, List<String> objetosIds) {
+        Cliente cliente = obtenerCliente(clienteCedula);
+        if (cliente == null) {
+            return false;
+        }
+
+        List<Objeto> objetosPrestamo = new ArrayList<>();
+        for (String id : objetosIds) {
+            Objeto objeto = obtenerObjeto(id);
+            if (objeto != null) {
+                objetosPrestamo.add(objeto);
+            }
+        }
+
+        // Si hay objetos para prestar, se crea el préstamo
+        if (!objetosPrestamo.isEmpty()) {
+            Prestamo nuevoPrestamo = Prestamo.builder()
+                    .numeroPrestamo(numeroPrestamo)
+                    .fechaPrestamo(fechaPrestamo)
+                    .fechaEntrega(fechaEntrega)
+                    .descripcion(descripcion)
+                    .clienteAsociado(cliente)
+                    .empleadoAsociado(null)
+                    .listaObjetosAsociados(objetosPrestamo)
+                    .build();
+            listaPrestamos.add(nuevoPrestamo);
+            return true;
+        }
+        return false;
     }
 }

@@ -24,39 +24,33 @@ public class ModelFactory implements IModelFactoryService {
         }
         return modelFactory;
     }
-
     // Constructor privado para inicializar el mapeador y los datos iniciales
     private ModelFactory() {
         mapper = new PrestamoMappingImpl();
-        prestamoObjeto = DataUtil.inicializarDatos();  // Inicializa los datos del sistema
+        prestamoObjeto = DataUtil.inicializarDatos();
     }
-
     // Obtiene la lista de clientes y los transforma a DTO usando el mapeador
     @Override
     public List<ClienteDto> obtenerClientes() {
         return mapper.getClientesDto(prestamoObjeto.getListaClientes());
     }
-
     // Agrega un cliente a la lista, transformando el DTO en un objeto de dominio
     @Override
     public boolean agregarCliente(ClienteDto clienteDto) {
         Cliente cliente = mapper.clienteDtoToCliente(clienteDto);
         return prestamoObjeto.crearCliente(cliente);
     }
-
     // Obtiene la lista de objetos y los transforma a DTO usando el mapeador
     @Override
     public List<ObjetoDto> obtenerObjetos() {
         return mapper.getObjetosDto(prestamoObjeto.getListaObjetos());
     }
-
     // Agrega un objeto a la lista, transformando el DTO en un objeto de dominio
     @Override
     public boolean agregarObjeto(ObjetoDto objetoDto) {
         Objeto objeto = mapper.objetoDtoToObjeto(objetoDto);
         return prestamoObjeto.crearObjeto(objeto);
     }
-
     // Consultar objetos por estado
     @Override
     public List<ObjetoDto> consultarObjetosPorEstado(String estado) {
@@ -65,29 +59,32 @@ public class ModelFactory implements IModelFactoryService {
         }
         return mapper.getObjetosDto(prestamoObjeto.consultarObjetosPorEstado(estado));
     }
-
+    // FALTA IMPLEMENTAR LA LOGICA
+    // Consultar objetos con mayor cantidad de prestamos
     @Override
     public List<ObjetoDto> consultarObjetosMayorPrestamos(int rangoPrestamos) {
-        return List.of();
+
+        if (rangoPrestamos < 0) {
+            throw new IllegalArgumentException("El rango de préstamos debe ser mayor o igual a cero.");
+        }
+        return mapper.getObjetosDto(prestamoObjeto.consultarObjetosMayorPrestamos(rangoPrestamos));
     }
 
-
-    // Consultar objetos con mayor cantidad de préstamos
-
-
+    // Consultar un objeto por ID
     @Override
-    public PrestamoObjeto consultarObjetoPorID(String idObjeto) {
+    public ObjetoDto consultarObjetoPorID(String idObjeto) {
         if (idObjeto == null || idObjeto.isEmpty()) {
             throw new IllegalArgumentException("El ID del objeto no puede estar vacío.");
         }
         Objeto objeto = prestamoObjeto.consultarObjetoPorID(idObjeto);
         if (objeto != null) {
-            return mapper.objetoToObjetoDto(objeto).ownedByPrestamoUq();
+            return mapper.objetoToObjetoDto(objeto);
         } else {
             throw new IllegalArgumentException("No se encontró ningún objeto con el ID proporcionado.");
         }
     }
 
+    // FALTA IMPLEMENTAR LA LOGICA
     // Consultar clientes con mayor cantidad de préstamos
     @Override
     public List<ClienteDto> consultarClientesMayorPrestamos(int rangoPrestamos) {
@@ -96,5 +93,4 @@ public class ModelFactory implements IModelFactoryService {
         }
         return mapper.getClientesDto(prestamoObjeto.consultarClientesMayorPrestamos(rangoPrestamos));
     }
-
 }

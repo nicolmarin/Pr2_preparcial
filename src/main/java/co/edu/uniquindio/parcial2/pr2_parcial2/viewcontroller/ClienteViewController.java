@@ -16,49 +16,25 @@ import java.util.ResourceBundle;
 import static co.edu.uniquindio.parcial2.pr2_parcial2.utils.PrestamoConstantes.*;
 
 public class ClienteViewController {
-
-
     ClienteController clienteController;
     ObservableList<ClienteDto> listaClientes = FXCollections.observableArrayList();
     ClienteDto clienteSeleccionado;
 
-
     @FXML
     private ResourceBundle resources;
-
     @FXML
     private URL location;
 
+    // ----------------------------- Buttons -----------------------------
     @FXML
     private Button btnActualizar;
-
     @FXML
     private Button btnAgregar;
-
     @FXML
     private Button btnEliminar;
-
     @FXML
     private Button btnNuevo;
-
-    @FXML
-    private TableView<ClienteDto> tableCliente;
-
-    @FXML
-    private TableColumn<ClienteDto, String> tcApellido;
-
-    @FXML
-    private TableColumn<ClienteDto, String> tcCedula;
-
-    @FXML
-    private TableColumn<ClienteDto, String> tcDireccion;
-
-    @FXML
-    private TableColumn<ClienteDto, String> tcEmail;
-
-    @FXML
-    private TableColumn<ClienteDto, String> tcNombre;
-
+    // ----------------------------- Text Fields -----------------------------
     @FXML
     private TextField txtApellido;
 
@@ -74,16 +50,42 @@ public class ClienteViewController {
     @FXML
     private TextField txtdireccion;
 
+    // ----------------------------- Table -----------------------------
 
+    @FXML
+    private TableView<ClienteDto> tableCliente;
+    @FXML
+    private TableColumn<ClienteDto, String> tcApellido;
+    @FXML
+    private TableColumn<ClienteDto, String> tcCedula;
+    @FXML
+    private TableColumn<ClienteDto, String> tcDireccion;
+    @FXML
+    private TableColumn<ClienteDto, String> tcEmail;
+    @FXML
+    private TableColumn<ClienteDto, String> tcNombre;
+
+    // ----------------------------- On Actions -----------------------------
+    @FXML
+    void onActualizarCliente(ActionEvent event) {
+    }
+    @FXML
+    void onEliminarCliente(ActionEvent event) {
+    }
+    @FXML
+    void onNuevoCliente(ActionEvent event) {
+        limpiarCampos();
+    }
+    @FXML
+    void onAgregarCliente(ActionEvent event) {
+        agregarCliente();
+    }
+
+    // ----------------------------- Métodos de inicialización -----------------------------
     @FXML
     void initialize() {
         clienteController = new ClienteController();
         initView();
-    }
-
-    @FXML
-    void onAgregarCliente(ActionEvent event) {
-        agregarCliente();
     }
 
     private void initView() {
@@ -93,11 +95,6 @@ public class ClienteViewController {
         tableCliente.setItems(listaClientes);
         listenerSelection();
     }
-
-    private void obtenerClientes() {
-       listaClientes.addAll(clienteController.obtenerClientes());
-    }
-
     private void initDataBinding() {
         tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombreCliente()));
         tcApellido.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().apellido()));
@@ -105,6 +102,14 @@ public class ClienteViewController {
         tcEmail.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().email()));
         tcDireccion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().direccion()));
     }
+
+
+
+
+    private void obtenerClientes() {
+       listaClientes.addAll(clienteController.obtenerClientes());
+    }
+
 
     private void listenerSelection() {
         tableCliente.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
@@ -162,7 +167,6 @@ public class ClienteViewController {
         }
     }
 
-
     private void mostrarInformacionCliente(ClienteDto clienteSeleccionado) {
         if(clienteSeleccionado != null){
             txtNombre.setText(clienteSeleccionado.nombreCliente());
@@ -172,7 +176,6 @@ public class ClienteViewController {
             txtdireccion.setText(clienteSeleccionado.direccion());
         }
     }
-
     private void mostrarMensaje(String titulo, String header, String contenido, Alert.AlertType alertType) {
         Alert aler = new Alert(alertType);
         aler.setTitle(titulo);
@@ -180,7 +183,6 @@ public class ClienteViewController {
         aler.setContentText(contenido);
         aler.showAndWait();
     }
-
     private boolean mostrarMensajeConfirmacion(String mensaje) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setHeaderText(null);
@@ -194,21 +196,5 @@ public class ClienteViewController {
         }
     }
 
-    @FXML
-    void onActualizarCliente(ActionEvent event) {
-
-    }
-
-
-
-    @FXML
-    void onEliminarCliente(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onNuevoCliente(ActionEvent event) {
-
-    }
 
 }
