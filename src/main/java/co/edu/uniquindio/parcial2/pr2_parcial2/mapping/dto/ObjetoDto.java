@@ -2,11 +2,12 @@ package co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto;
 
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.PrestamoObjeto;
 
-public record ObjetoDto ( String nombre,
+public record ObjetoDto (
+        String nombre,
         String idObjeto,
-        PrestamoObjeto ownedByPrestamoUq,String estado
-){
+        String estado,
+        PrestamoObjeto ownedByPrestamoUq
 
-
+) {
 }
 

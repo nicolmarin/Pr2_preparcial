@@ -1,12 +1,15 @@
 package co.edu.uniquindio.parcial2.pr2_parcial2.utils;
 
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.Cliente;
+import co.edu.uniquindio.parcial2.pr2_parcial2.model.Objeto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.PrestamoObjeto;
 
 public class DataUtil {
 
     public static PrestamoObjeto inicializarDatos() {
         PrestamoObjeto prestamoObjeto = new PrestamoObjeto();
+
+        // ------------------- Instancias de Cliente -------------------
         Cliente cliente1 = Cliente.builder()
                 .cedula("1094")
                 .nombre("juan")
@@ -49,6 +52,46 @@ public class DataUtil {
                 .edad(18)
                 .email("nicold.marinm@gmail.com")
                 .build();
+
+        // ------------------- Instancias de Objeto -------------------
+        Objeto objeto1 = Objeto.builder()
+                .nombre("Libro - Cien años de soledad")
+                .idObjeto("101")
+                .estado("Disponible")
+                .build();
+        Objeto objeto2 = Objeto.builder()
+                .nombre("Revista - El increibe hombre araña")
+                .idObjeto("102")
+                .estado("Disponible")
+                .build();
+        Objeto objeto3 = Objeto.builder()
+                .nombre("Libro - Cien años de soledad")
+                .idObjeto("103")
+                .estado("Disponible")
+                .build();
+        Objeto objeto4 = Objeto.builder()
+                .nombre("Libro - Cien años de soledad")
+                .idObjeto("104")
+                .estado("No Disponible")
+                .build();
+        Objeto objeto5 = Objeto.builder()
+                .nombre("Libro - Cien años de soledad")
+                .idObjeto("105")
+                .estado("No Disponible")
+                .build();
+        Objeto objeto6 = Objeto.builder()
+                .nombre("Libro - Cien años de soledad")
+                .idObjeto("106")
+                .estado("No Disponible")
+                .build();
+
+        // -------------------------------------------------------------
+        prestamoObjeto.getListaObjetos().add(objeto1);
+        prestamoObjeto.getListaObjetos().add(objeto2);
+        prestamoObjeto.getListaObjetos().add(objeto3);
+        prestamoObjeto.getListaObjetos().add(objeto4);
+        prestamoObjeto.getListaObjetos().add(objeto5);
+        prestamoObjeto.getListaObjetos().add(objeto6);
 
         prestamoObjeto.getListaClientes().add(cliente1);
         prestamoObjeto.getListaClientes().add(cliente2);

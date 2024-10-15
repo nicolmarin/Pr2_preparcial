@@ -15,10 +15,21 @@ public class PrestamoObjeto {
 
     private String nombre;
 
+    public List<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+    public void setListaClientes(List<Cliente> listaClientes) {
+        this.listaClientes = listaClientes;
+    }
+    public String getNombre() {
+        return nombre;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
     public List<Objeto> getListaObjetos() {
         return listaObjetos;
     }
-
     public void setListaObjetos(List<Objeto> listaObjetos) {
         this.listaObjetos = listaObjetos;
     }
@@ -78,23 +89,6 @@ public class PrestamoObjeto {
         }
 
         return cliente;
-    }
-
-
-    public List<Cliente> getListaClientes() {
-        return listaClientes;
-    }
-
-    public void setListaClientes(List<Cliente> listaClientes) {
-        this.listaClientes = listaClientes;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String obtenerClientesPorCiudad(String ciudad) {
