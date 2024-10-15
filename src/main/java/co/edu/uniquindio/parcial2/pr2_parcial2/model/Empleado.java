@@ -1,10 +1,15 @@
 package co.edu.uniquindio.parcial2.pr2_parcial2.model;
 
-public class Empleado extends  Persona{
-    PrestamoObjeto ownedByPrestamoUq;
+import co.edu.uniquindio.parcial2.pr2_parcial2.model.builder.EmpleadoBuilder;
+
+public class Empleado extends Persona {
+    private String idEmpleado;
+    private String cargo;
+    private PrestamoObjeto ownedByPrestamoUq;
 
     public Empleado() {
     }
+
     public Empleado(
             String idEmpleado,
             String nombre,
@@ -12,12 +17,39 @@ public class Empleado extends  Persona{
             String cargo,
             String email,
             String telefono) {
+        super(nombre, apellido, email, telefono); // Llama al constructor de la clase base Persona
+        this.idEmpleado = idEmpleado;
+        this.cargo = cargo;
     }
+
+    // Método estático para obtener el builder del empleado
+    public static EmpleadoBuilder builder() {
+        return new EmpleadoBuilder();
+    }
+
+    // Getters y Setters
+    public String getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(String idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
     public PrestamoObjeto getOwnedByPrestamoUq() {
         return ownedByPrestamoUq;
     }
+
     public void setOwnedByPrestamoUq(PrestamoObjeto ownedByPrestamoUq) {
         this.ownedByPrestamoUq = ownedByPrestamoUq;
     }
-
 }
+

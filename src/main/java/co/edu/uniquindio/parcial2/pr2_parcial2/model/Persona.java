@@ -10,6 +10,9 @@ public abstract class Persona {
     public Persona() {
     }
 
+    public Persona(String nombre, String apellido, String email, String telefono) {
+    }
+
     public String getNombre() {
         return nombre;
     }
