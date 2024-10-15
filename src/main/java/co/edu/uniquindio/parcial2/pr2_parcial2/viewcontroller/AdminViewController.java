@@ -1,40 +1,36 @@
 package co.edu.uniquindio.parcial2.pr2_parcial2.viewcontroller;
 
 import co.edu.uniquindio.parcial2.pr2_parcial2.controller.AdminController;
+import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ClienteDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ObjetoDto;
-import co.edu.uniquindio.parcial2.pr2_parcial2.model.PrestamoObjeto;
-import javafx.beans.property.SimpleStringProperty;
+import co.edu.uniquindio.parcial2.pr2_parcial2.model.Objeto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.util.List;
+
+import static co.edu.uniquindio.parcial2.pr2_parcial2.utils.AdminConstantes.*;
+
 public class AdminViewController {
     private AdminController adminController;
-    private ObservableList<ObjetoDto> listaObjetos = FXCollections.observableArrayList();
+    private final ObservableList<ObjetoDto> listaObjetos = FXCollections.observableArrayList();
+    private final ObservableList<ClienteDto> listaClientesMayorPrestamos = FXCollections.observableArrayList();
+    private final ObservableList<ObjetoDto> listaObjetosPorID = FXCollections.observableArrayList();
+    private final ObservableList<ObjetoDto> listaObjetosMayorPrestamos = FXCollections.observableArrayList();
     private ObjetoDto objetoSeleccionado;
 
     //----------------------------- List Views -----------------------------
     @FXML
-    private ListView<?> listObjetosMayorPrestamos11;
+    private ListView<ObjetoDto> listObjetos;
     @FXML
-    private ListView<ObjetoDto> listCMenorPrestamos;
+    private ListView<ClienteDto> listBuscarClientesMayorPrestamos;
+    @FXML
+    private ListView<ObjetoDto> listBuscarPorID;
     @FXML
     private ListView<ObjetoDto> listObjetosMayorPrestamos;
-    @FXML
-    private ListView<ObjetoDto> listObjetosMayorPrestamos1;
-
-    //----------------------------- Table View -----------------------------
-    @FXML
-    private TableView<ObjetoDto> tabObjetosDND;
-    @FXML
-    private TableColumn<ObjetoDto,String> tcEstado;
-    @FXML
-    private TableColumn<ObjetoDto,String> tcNombre;
-    @FXML
-    private TableColumn<ObjetoDto, String> tcID;
-
 
     //----------------------------- Text Fields -----------------------------
     @FXML
@@ -44,21 +40,11 @@ public class AdminViewController {
     @FXML
     private TextField txtNombre;
     @FXML
-    private TextField txtCantidadObjetosMPrestamos1;
-    @FXML
     private TextField txtRangoOMayorPrestamos;
     @FXML
     private TextField txtBuscarObjetoID;
     @FXML
-    private TextField txtRangoCMenorPrestamos;
-    @FXML
-    private TextField txtRangoObjetoXID;
-    @FXML
-    private TextField txtCantidadObjetosMPrestamos;
-    @FXML
     private TextField txtCantidadClientesMayorPrestamos;
-    @FXML
-    private TextField txtRangoCMayorPrestamos2;
 
     //----------------------------- Buttons -----------------------------
     @FXML
@@ -68,55 +54,102 @@ public class AdminViewController {
     @FXML
     private Button btnConsultarObjetosXEstado;
     @FXML
-    private Button btnConsultarClMenorPrestamos;
-    @FXML
-    private Button btnConsultarClientesMayorPrestamos2;
-
+    private Button btnConsultarClientesMayorPrestamos;
 
     //----------------------------- On Actions -----------------------------
-    @FXML
-    void onConsultarCMenorPrestamos(ActionEvent event) {
-    }
+
     @FXML
     void onConsultarObjetosXEstado(ActionEvent event) {
-    }
-    @FXML
-    void onConsultarObjetosMayorPrestamos(ActionEvent event) {
-    }
-    @FXML
-    void onConsultarObjetosID(ActionEvent event) {
-        PrestamoObjeto objeto = new PrestamoObjeto();
+        consultarObjetoXEstado();
     }
     @FXML
     void onConsultarClientesMayorPrestamos(ActionEvent event) {
+        consultarClientesMayorPrestamos();
     }
-
-    //---------------------------------------------------------------------------
-
 
     @FXML
-    void initialize(){
-        adminController= new AdminController() ;
-        initView();
+    void onConsultarObjetosMayorPrestamos(ActionEvent event) {
+        consultarObjetosMayorPrestamos();
     }
-    private void initView() {
+
+    @FXML
+    void onConsultarObjetosID(ActionEvent event) {
+       consultarObjetoID();
+    }
+    //-------------------------------------------------------------------
+
+    private void consultarObjetoID() {
+        if (!txtBuscarObjetoID.getText().isEmpty()) {
+            Objeto objeto = adminController.consultarObjetoPorID(txtBuscarObjetoID.getText());
+            if (objeto != null) {
+                ObjetoDto objetoDto = new ObjetoDto(objeto.getIdObjeto(), objeto.getNombre(), objeto.getEstado(), objeto.getOwnedByPrestamoUq());
+                listaObjetosPorID.setAll(FXCollections.observableArrayList(objetoDto));
+                listBuscarPorID.setItems(listaObjetosPorID);
+                mostrarMensaje("Objeto Encontrado", "Información", objeto.toString(), Alert.AlertType.INFORMATION);
+            } else {
+                mostrarMensaje(TITULO_OBJETO_NO_ENCONTRADO, HEADER, BODY_ID_NO_ENCONTRADO, Alert.AlertType.ERROR);
+            }
+        } else {
+            mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_ID_NO_ENCONTRADO, Alert.AlertType.ERROR);
+        }
+    }
+    private void consultarObjetosMayorPrestamos(){
+        if (!txtRangoOMayorPrestamos.getText().isEmpty()) {
+            listaObjetosMayorPrestamos.setAll(adminController.consultarObjetosMayorPrestamos(txtRangoOMayorPrestamos.getText()));
+            listObjetosMayorPrestamos.setItems(listaObjetosMayorPrestamos);
+        } else {
+            mostrarMensaje(TITULO_OBJETO_NO_ENCONTRADO, HEADER, BODY_INGRESE_RANGO, Alert.AlertType.INFORMATION);
+        }
+    }
+    private void consultarClientesMayorPrestamos() {
+        String cantidadTexto = txtCantidadClientesMayorPrestamos.getText();
+        if (!cantidadTexto.isEmpty()) {
+            try {
+                int cantidadPrestamos = Integer.parseInt(cantidadTexto);
+                List<ClienteDto> clientes = adminController.consultarClientesMayorPrestamos(cantidadPrestamos);
+
+                ObservableList<ClienteDto> observableClientes = FXCollections.observableArrayList(clientes);
+                listaClientesMayorPrestamos.setAll(observableClientes);
+                listBuscarClientesMayorPrestamos.setItems(listaClientesMayorPrestamos);
+            } catch (NumberFormatException e) {
+                mostrarMensaje("Entrada no válida", "Error", "Por favor, ingrese un número válido", Alert.AlertType.ERROR);
+            }
+        } else {
+            mostrarMensaje("Cantidad no ingresada", "Error", "Por favor, ingrese la cantidad de clientes", Alert.AlertType.ERROR);
+        }
+    }
+    private void consultarObjetoXEstado() {
+        if (!txtEstado.getText().isEmpty()) {
+            listaObjetos.setAll(adminController.consultarObjetosPorEstado(txtEstado.getText()));
+            listObjetos.setItems(listaObjetos);
+            mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_INGRESE_ESTADO, Alert.AlertType.CONFIRMATION);
+        } else {
+            mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_INGRESE_ESTADO, Alert.AlertType.INFORMATION);
+        }
+    }
+
+    //----------------------------- Métodos de inicialización -----------------------------
+    @FXML
+    void initialize() {
+        adminController = new AdminController();
         initDataBinding();
-        ObtenerObjetos();
-        tabObjetosDND.getItems().clear();
-        tabObjetosDND.setItems(listaObjetos);
+        cargarObjetos();
         listenerSelection();
-    }
-    private void ObtenerObjetos() {
-        listaObjetos.addAll(adminController.obtenerObjetoss());
 
     }
+
+    private void cargarObjetos() {
+        listaObjetos.setAll(adminController.obtenerObjetoss());
+        listObjetos.setItems(listaObjetos);
+    }
+
     private void listenerSelection() {
-        tabObjetosDND.getSelectionModel().selectedItemProperty().addListener((_,_,newSelection) -> {
+        listObjetos.getSelectionModel().selectedItemProperty().addListener((_, _, newSelection) -> {
             objetoSeleccionado = newSelection;
             mostrarInformacionDeObjeto(objetoSeleccionado);
         });
     }
-    // Método que muestra la información del producto seleccionado en los campos de texto
+
     private void mostrarInformacionDeObjeto(ObjetoDto objetoSeleccionado) {
         if (objetoSeleccionado != null) {
             txtNombre.setText(objetoSeleccionado.nombre());
@@ -124,11 +157,46 @@ public class AdminViewController {
             txtEstado.setText(objetoSeleccionado.estado());
         }
     }
+
     private void initDataBinding() {
-        tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
-        tcEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().estado()));
-        tcID.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().idObjeto()));
+        listObjetos.setCellFactory(lv -> new ListCell<ObjetoDto>() {
+            @Override
+            protected void updateItem(ObjetoDto item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? null : "ID: " + item.idObjeto() + " - Nombre: " + item.nombre());
+            }
+        });
+
+        listBuscarPorID.setCellFactory(lv -> new ListCell<ObjetoDto>() {
+            @Override
+            protected void updateItem(ObjetoDto item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? null : "ID: " + item.idObjeto() + " - Nombre: " + item.nombre());
+            }
+        });
+
+        listBuscarClientesMayorPrestamos.setCellFactory(lv -> new ListCell<ClienteDto>() {
+            @Override
+            protected void updateItem(ClienteDto item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? null : "Cliente: " + item.nombreCliente());
+            }
+        });
+
+        listObjetosMayorPrestamos.setCellFactory(lv -> new ListCell<ObjetoDto>() {
+            @Override
+            protected void updateItem(ObjetoDto item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? null : "ID: " + item.idObjeto() + " - Préstamos: " + item.nombre());
+            }
+        });
     }
 
-
+    private void mostrarMensaje(String titulo, String header, String contenido, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(titulo);
+        alert.setHeaderText(header);
+        alert.setContentText(contenido);
+        alert.showAndWait();
+    }
 }

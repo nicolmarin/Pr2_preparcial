@@ -99,7 +99,7 @@ public class ClienteViewController {
     }
 
     private void initDataBinding() {
-        tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
+        tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombreCliente()));
         tcApellido.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().apellido()));
         tcCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().cedula()));
         tcEmail.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().email()));
@@ -150,7 +150,7 @@ public class ClienteViewController {
     }
 
     private boolean datosValidos(ClienteDto clienteDto) {
-        if(clienteDto.nombre().isBlank() ||
+        if(clienteDto.nombreCliente().isBlank() ||
            clienteDto.apellido().isBlank() ||
            clienteDto.cedula().isBlank() ||
            clienteDto.email().isBlank() ||
@@ -165,7 +165,7 @@ public class ClienteViewController {
 
     private void mostrarInformacionCliente(ClienteDto clienteSeleccionado) {
         if(clienteSeleccionado != null){
-            txtNombre.setText(clienteSeleccionado.nombre());
+            txtNombre.setText(clienteSeleccionado.nombreCliente());
             txtApellido.setText(clienteSeleccionado.apellido());
             txtCedula.setText(clienteSeleccionado.cedula());
             txtEmail.setText(clienteSeleccionado.email());

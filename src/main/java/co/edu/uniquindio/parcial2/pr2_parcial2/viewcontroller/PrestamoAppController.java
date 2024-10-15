@@ -8,12 +8,9 @@ import java.util.ResourceBundle;
 public class PrestamoAppController {
     @FXML
     private ResourceBundle resources;
-
     @FXML
     private URL location;
-
     @FXML
     void initialize() {
-
     }
 }

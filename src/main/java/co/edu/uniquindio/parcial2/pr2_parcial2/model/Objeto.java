@@ -17,8 +17,12 @@ public class Objeto {
         this.estado = estado;
     }
 
-    public Objeto(String nombre) {
+    public Objeto(String idObjeto, String s, String nombre) {
         this.nombre = nombre;
+    }
+
+    public Objeto() {
+
     }
 
     public static ObjetoBuilder builder() {
@@ -60,8 +64,15 @@ public class Objeto {
     @Override
     public String toString() {
         return "Objeto{" +
-                "nombre='" + nombre + '\'' +
+                "nombreCliente='" + nombre + '\'' +
                 ", idObjeto='" + idObjeto + '\'' +
                 '}';
     }
+
+
+    public int getCantidadObjetoPrestado() {
+        return 0;
+    }
+
+
 }

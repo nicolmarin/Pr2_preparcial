@@ -10,11 +10,9 @@ public class ClienteController {
     public ClienteController(){
         modelFactory = ModelFactory.getInstancia();
     }
-
     public List<ClienteDto> obtenerClientes() {
         return modelFactory.obtenerClientes();
     }
-
     public boolean agregarCliente(ClienteDto clienteDto) {
         return modelFactory.agregarCliente(clienteDto);
     }

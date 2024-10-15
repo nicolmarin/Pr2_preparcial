@@ -27,11 +27,8 @@ public interface IPrestamoUQ {
                           String cedulaCliente,
                           String cedulaEmpleado,
                           String idObjeto);
-
     boolean eliminarPrestamo(String numeroPrestamo);
-
     boolean actualizarPrestamo(String numeroPrestamoActual, String numeroPrestamo, Date fechaPrestamo, Date fechaEntrega, String descripcion);
-
     Prestamo obtenerPrestamo(String numeroPrestamo);
 
 }

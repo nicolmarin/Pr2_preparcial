@@ -5,7 +5,7 @@ import co.edu.uniquindio.parcial2.pr2_parcial2.model.Cliente;
 
 public class ClienteBuilder {
     protected String cedula;
-    protected String nombre;
+    protected String nombreCliente;
     protected String apellido;
     protected String email;
     protected String telefonoFijo;
@@ -17,43 +17,35 @@ public class ClienteBuilder {
         this.cedula = cedula;
         return this; // Devuelve la instancia actual de ClienteBuilder
     }
-
-    public ClienteBuilder nombre(String nombre) {
-        this.nombre = nombre;
-        return this; // Devuelve la instancia actual de ClienteBuilder
+    public ClienteBuilder nombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
+        return this;
     }
-
     public ClienteBuilder apellido(String apellido) {
         this.apellido = apellido;
-        return this; // Devuelve la instancia actual de ClienteBuilder
+        return this;
     }
-
     public ClienteBuilder email(String email) {
         this.email = email;
-        return this; // Devuelve la instancia actual de ClienteBuilder
+        return this;
     }
-
     public ClienteBuilder telefonoFijo(String telefonoFijo) {
         this.telefonoFijo = telefonoFijo;
-        return this; // Devuelve la instancia actual de ClienteBuilder
+        return this;
     }
-
     public ClienteBuilder telefonoCelular(String telefonoCelular) {
         this.telefonoCelular = telefonoCelular;
-        return this; // Devuelve la instancia actual de ClienteBuilder
+        return this;
     }
-
     public ClienteBuilder direccion(String direccion) {
         this.direccion = direccion;
-        return this; // Devuelve la instancia actual de ClienteBuilder
+        return this;
     }
-
     public ClienteBuilder edad(int edad) {
         this.edad = edad;
-        return this; // Devuelve la instancia actual de ClienteBuilder
+        return this;
     }
-
     public Cliente build() {
-        return new Cliente(cedula, nombre, apellido, email, telefonoFijo, telefonoCelular, direccion, edad);
+        return new Cliente(cedula, nombreCliente, apellido, email, telefonoFijo, telefonoCelular, direccion, edad);
     }
 }

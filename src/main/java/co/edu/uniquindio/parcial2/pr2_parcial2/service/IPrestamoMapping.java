@@ -15,6 +15,4 @@ public interface IPrestamoMapping {
     List<ObjetoDto> getObjetosDto(List<Objeto> listaObjetos);
     ObjetoDto objetoToObjetoDto(Objeto objeto);
     Objeto objetoDtoToObjeto(ObjetoDto objetoDto);
-
-
 }

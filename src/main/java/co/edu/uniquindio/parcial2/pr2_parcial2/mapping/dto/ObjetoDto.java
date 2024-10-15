@@ -7,7 +7,6 @@ public record ObjetoDto (
         String idObjeto,
         String estado,
         PrestamoObjeto ownedByPrestamoUq
-
 ) {
 }
 

@@ -12,7 +12,7 @@ public class DataUtil {
         // ------------------- Instancias de Cliente -------------------
         Cliente cliente1 = Cliente.builder()
                 .cedula("1094")
-                .nombre("juan")
+                .nombreCliente("juan")
                 .apellido("arias")
                 .direccion("armenia")
                 .edad(17)
@@ -21,7 +21,7 @@ public class DataUtil {
 
         Cliente cliente2 = Cliente.builder()
                 .cedula("1095")
-                .nombre("Ana")
+                .nombreCliente("Ana")
                 .apellido("cardenas")
                 .direccion("quimbaya")
                 .edad(25)
@@ -30,7 +30,7 @@ public class DataUtil {
 
         Cliente cliente3 = Cliente.builder()
                 .cedula("1096")
-                .nombre("Pedro")
+                .nombreCliente("Pedro")
                 .apellido("perez")
                 .direccion("armenia")
                 .edad(40)
@@ -38,7 +38,7 @@ public class DataUtil {
                 .build();
         Cliente cliente4 = Cliente.builder()
                 .cedula("24567")
-                .nombre("Maria luisa")
+                .nombreCliente("Maria luisa")
                 .apellido("marin Pereira")
                 .direccion("Salento")
                 .edad(15)
@@ -46,7 +46,7 @@ public class DataUtil {
                 .build();
         Cliente cliente5 = Cliente.builder()
                 .cedula("89756")
-                .nombre("Nicol Dayana")
+                .nombreCliente("Nicol Dayana")
                 .apellido("Moreno")
                 .direccion("Pereira")
                 .edad(18)

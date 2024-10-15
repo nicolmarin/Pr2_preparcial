@@ -28,8 +28,5 @@ public class ObjetoBuilder {
     public Objeto build() {
         return new Objeto(nombre, idObjeto,ownedByPrestamoUq,estado);
     }
-
-
-
 }
 

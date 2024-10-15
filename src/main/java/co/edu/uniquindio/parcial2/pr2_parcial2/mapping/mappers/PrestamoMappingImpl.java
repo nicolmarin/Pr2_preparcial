@@ -27,7 +27,7 @@ public class PrestamoMappingImpl implements IPrestamoMapping {
     @Override
     public ClienteDto clienteToClienteDto(Cliente cliente) {
         return new ClienteDto(
-                cliente.getNombre(),
+                cliente.getNombreCliente(),
                 cliente.getApellido(),
                 cliente.getCedula(),
                 cliente.getEmail(),
@@ -37,7 +37,7 @@ public class PrestamoMappingImpl implements IPrestamoMapping {
     @Override
     public Cliente clienteDtoToCliente(ClienteDto clienteDto) {
         return Cliente.builder()
-                .nombre(clienteDto.nombre())
+                .nombreCliente(clienteDto.nombreCliente())
                 .apellido(clienteDto.apellido())
                 .cedula(clienteDto.cedula())
                 .email(clienteDto.email())
@@ -66,7 +66,9 @@ public class PrestamoMappingImpl implements IPrestamoMapping {
     }
     @Override
     public Objeto objetoDtoToObjeto(ObjetoDto objetoDto) {
-        return Objeto.builder().nombre(objetoDto.nombre())
+        return Objeto.builder()
+                .nombre(objetoDto.nombre())
+                .estado(objetoDto.estado())
                 .idObjeto(objetoDto.idObjeto())
                 .ownedByPrestamoUq(objetoDto.ownedByPrestamoUq()).build();
     }
