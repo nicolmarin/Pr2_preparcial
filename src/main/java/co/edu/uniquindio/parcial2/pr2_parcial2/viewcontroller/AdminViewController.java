@@ -122,7 +122,6 @@ public class AdminViewController {
         if (!txtEstado.getText().isEmpty()) {
             listaObjetos.setAll(adminController.consultarObjetosPorEstado(txtEstado.getText()));
             listObjetos.setItems(listaObjetos);
-            mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_INGRESE_ESTADO, Alert.AlertType.CONFIRMATION);
         } else {
             mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_INGRESE_ESTADO, Alert.AlertType.INFORMATION);
         }
