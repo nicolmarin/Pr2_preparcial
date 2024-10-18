@@ -63,7 +63,6 @@ public class ModelFactory implements IModelFactoryService {
     // Consultar objetos con mayor cantidad de prestamos
     @Override
     public List<ObjetoDto> consultarObjetosMayorPrestamos(int rangoPrestamos) {
-
         if (rangoPrestamos < 0) {
             throw new IllegalArgumentException("El rango de préstamos debe ser mayor o igual a cero.");
         }

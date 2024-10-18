@@ -20,7 +20,8 @@ public class Cliente {
                    String telefonoFijo,
                    String telefonoCelular,
                    String direccion,
-                   int edad) {
+                   int edad,
+                   int cantidadPrestamos) {
         this.cedula = cedula;
         this.nombreCliente = nombreCliente;
         this.apellido = apellido;
@@ -31,11 +32,11 @@ public class Cliente {
         this.edad = edad;
         this.cantidadPrestamos = 0;
     }
-    // Método para incrementar la cantidad de préstamos
+
     public void incrementarCantidadPrestamos() {
         this.cantidadPrestamos++;
     }
-    // Método toString para representar el objeto Cliente como una cadena
+
     @Override
     public String toString() {
         return String.format("Cliente{cedula='%s', nombreCliente='%s', apellido='%s', email='%s', telefonoFijo='%s', telefonoCelular='%s', direccion='%s', edad=%d, cantidadPrestamos=%d}",

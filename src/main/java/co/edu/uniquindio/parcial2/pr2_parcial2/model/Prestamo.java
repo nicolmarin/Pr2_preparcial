@@ -14,6 +14,8 @@ public class Prestamo {
     private Empleado empleadoAsociado;
     private Cliente clienteAsociado;
     List<Objeto> listaObjetosAsociados = new ArrayList<>();
+    private int cantidadPrestamos;
+
 
 
     public static PrestamoBuilder builder() {
@@ -23,7 +25,15 @@ public class Prestamo {
     public Prestamo() {
     }
 
-    public Prestamo(String numeroPrestamo, Date fechaPrestamo, Date fechaEntrega, String descripcion, Empleado empleadoAsociado, Cliente clienteAsociado, List<Objeto> listaObjetosAsociados) {
+    public Prestamo(String numeroPrestamo,
+                    Date fechaPrestamo,
+                    Date fechaEntrega,
+                    String descripcion,
+                    Empleado empleadoAsociado,
+                    Cliente clienteAsociado,
+                    List<Objeto> listaObjetosAsociados,
+                    int cantidadPrestamos) {
+
         this.numeroPrestamo = numeroPrestamo;
         this.fechaPrestamo = fechaPrestamo;
         this.fechaEntrega = fechaEntrega;
@@ -31,13 +41,16 @@ public class Prestamo {
         this.empleadoAsociado = empleadoAsociado;
         this.clienteAsociado = clienteAsociado;
         this.listaObjetosAsociados = listaObjetosAsociados;
+        this.cantidadPrestamos = cantidadPrestamos = 1;
     }
 
     // ------------------------------------ Getters y Setters ------------------------------------
     public String getNumeroPrestamo() {
         return numeroPrestamo;
     }
-
+    public int getCantidadPrestamos() {
+        return cantidadPrestamos;
+    }
     public void setNumeroPrestamo(String numeroPrestamo) {
         this.numeroPrestamo = numeroPrestamo;
     }
@@ -89,4 +102,6 @@ public class Prestamo {
     public void setListaObjetosAsociados(List<Objeto> listaObjetosAsociados) {
         this.listaObjetosAsociados = listaObjetosAsociados;
     }
+
+
 }

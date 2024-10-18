@@ -158,7 +158,7 @@ public class PrestamoObjeto extends Objeto {
         return objetosFiltrados;
     }
 
-    // Consulta objetos con mayor cantidad de préstamos de forma imperativa
+    // Consulta objetos con mayor cantidad de préstamos
     public List<Objeto> consultarObjetosMayorPrestamos(int cantidadPrestamos) {
         List<Objeto> objetosFiltrados = new ArrayList<>();
         for (Objeto objeto : listaObjetos) {

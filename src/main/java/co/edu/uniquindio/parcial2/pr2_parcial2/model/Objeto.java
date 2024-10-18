@@ -7,14 +7,23 @@ public class Objeto {
     private String idObjeto;
     PrestamoObjeto ownedByPrestamoUq;
     private String estado;
+    private int cantidadPrestamos;
 
 
-
-    public Objeto(String nombre, String idObjeto,PrestamoObjeto ownedByPrestamoUq,String estado) {
+    public Objeto(String nombre, String idObjeto, PrestamoObjeto ownedByPrestamoUq, String estado, int cantidadPrestamos) {
         this.nombre = nombre;
         this.idObjeto = idObjeto;
         this.ownedByPrestamoUq = ownedByPrestamoUq;
         this.estado = estado;
+        this.cantidadPrestamos = 0;
+    }
+
+    public int getCantidadPrestamos() {
+        return cantidadPrestamos;
+    }
+
+    public void incrementarCanidadPrestamos(){
+        this.cantidadPrestamos++;
     }
 
     public Objeto(String idObjeto, String s, String nombre) {
@@ -64,11 +73,14 @@ public class Objeto {
     @Override
     public String toString() {
         return "Objeto{" +
-                "nombreCliente='" + nombre + '\'' +
+                "nombre='" + nombre + '\'' +
                 ", idObjeto='" + idObjeto + '\'' +
-                '}';
+                ", ownedByPrestamoUq=" + ownedByPrestamoUq +
+                ", estado='" + estado + '\'' +
+                ", cantidadPrestamos=" + cantidadPrestamos +
+                '}'
+        ;
     }
-
 
     public int getCantidadObjetoPrestado() {
         return 0;

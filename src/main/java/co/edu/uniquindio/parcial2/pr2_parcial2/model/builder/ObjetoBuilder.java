@@ -8,7 +8,12 @@ public class ObjetoBuilder {
     protected String idObjeto;
     PrestamoObjeto ownedByPrestamoUq;
     protected String estado;
+    protected int cantidadPrestamos;
 
+    public ObjetoBuilder cantidadPrestamos(int cantidadPrestamos) {
+        this.cantidadPrestamos = cantidadPrestamos;
+        return this;
+    }
     public ObjetoBuilder nombre(String nombre) {
         this.nombre = nombre;
         return this;
@@ -26,6 +31,6 @@ public class ObjetoBuilder {
         return this;
     }
     public Objeto build() {
-        return new Objeto(nombre, idObjeto,ownedByPrestamoUq,estado);
+        return new Objeto(nombre, idObjeto,ownedByPrestamoUq,estado, cantidadPrestamos);
     }
 }

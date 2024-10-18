@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4181a8c6-de37-4202-b2a8-ca059425fb7e" name="Changes" comment="Se crea proyecto JavaFx para el parcial 2" />
+    <list default="true" id="4181a8c6-de37-4202-b2a8-ca059425fb7e" name="Changes" comment="Se crea proyecto JavaFx para el parcial 2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/factory/ModelFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/factory/ModelFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/Objeto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/Objeto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/Prestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/Prestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/PrestamoObjeto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/PrestamoObjeto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/builder/ClienteBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/builder/ClienteBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/builder/ObjetoBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/builder/ObjetoBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/builder/PrestamoBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/parcial2/pr2_parcial2/model/builder/PrestamoBuilder.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,7 +116,9 @@
       <workItem from="1728941755049" duration="4742000" />
       <workItem from="1728957083619" duration="24524000" />
       <workItem from="1729015345577" duration="7379000" />
-      <workItem from="1729032249706" duration="4433000" />
+      <workItem from="1729032249706" duration="4813000" />
+      <workItem from="1729040686268" duration="6117000" />
+      <workItem from="1729252613524" duration="2525000" />
     </task>
     <task id="LOCAL-00001" summary="Se crea proyecto JavaFx para el parcial 2">
       <option name="closed" value="true" />
