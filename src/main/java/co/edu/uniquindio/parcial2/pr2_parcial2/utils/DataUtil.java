@@ -1,6 +1,7 @@
 package co.edu.uniquindio.parcial2.pr2_parcial2.utils;
 
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.Cliente;
+import co.edu.uniquindio.parcial2.pr2_parcial2.model.Empleado;
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.Objeto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.Prestamo;
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.PrestamoObjeto;
@@ -14,6 +15,10 @@ public class DataUtil {
 
     public static PrestamoObjeto inicializarDatos() {
         PrestamoObjeto prestamoObjeto = new PrestamoObjeto();
+
+        // ------------------- Instancias de Empleado -------------------
+        Empleado empleado1 = new Empleado("E001", "Laura", "Gomez", "Bibliotecaria", "laura@biblioteca.com", "123456789");
+        Empleado empleado2 = new Empleado("E002", "Carlos", "Ruiz", "Asistente", "carlos@biblioteca.com", "987654321");
 
         // ------------------- Instancias de Cliente -------------------
         Cliente cliente1 = Cliente.builder()
@@ -98,6 +103,7 @@ public class DataUtil {
                 .estado("No Disponible")
                 .build();
 
+
         // ------------------- Instancias de Prestamo -------------------
         // Préstamo 1 - con un solo objeto
         List<Objeto> objetosPrestamo1 = new ArrayList<>();
@@ -109,7 +115,7 @@ public class DataUtil {
                 .fechaEntrega(new Date())
                 .descripcion("Préstamo de un libro")
                 .clienteAsociado(cliente1)
-                .empleadoAsociado(null)
+                .empleadoAsociado(empleado1)
                 .listaObjetosAsociados(objetosPrestamo1)
                 .build();
 
@@ -124,7 +130,7 @@ public class DataUtil {
                 .fechaEntrega(new Date())
                 .descripcion("Préstamo de libro y revista")
                 .clienteAsociado(cliente2)
-                .empleadoAsociado(null)
+                .empleadoAsociado(empleado2)
                 .listaObjetosAsociados(objetosPrestamo2)
                 .build();
 
@@ -140,9 +146,20 @@ public class DataUtil {
                 .fechaEntrega(new Date())
                 .descripcion("Préstamo de varios libros")
                 .clienteAsociado(cliente3)
-                .empleadoAsociado(null)
+                .empleadoAsociado(empleado1)
                 .listaObjetosAsociados(objetosPrestamo3)
                 .build();
+
+        Prestamo prestamo4 = Prestamo.builder()
+                .numeroPrestamo("003")
+                .fechaPrestamo(new Date())
+                .fechaEntrega(new Date())
+                .descripcion("Préstamo de varios libros")
+                .clienteAsociado(cliente3)
+                .empleadoAsociado(empleado1)
+                .listaObjetosAsociados(objetosPrestamo3)
+                .build();
+
 
         // Agregar objetos a PrestamoObjeto
         prestamoObjeto.getListaObjetos().add(objeto1);
@@ -163,6 +180,7 @@ public class DataUtil {
         prestamoObjeto.getListaPrestamos().add(prestamo1);
         prestamoObjeto.getListaPrestamos().add(prestamo2);
         prestamoObjeto.getListaPrestamos().add(prestamo3);
+        prestamoObjeto.getListaPrestamos().add(prestamo4);
 
         return prestamoObjeto;
     }

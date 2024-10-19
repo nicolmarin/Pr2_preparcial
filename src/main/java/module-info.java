@@ -1,6 +1,7 @@
 module co.edu.uniquindio.parcial.pr2_parcial {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
     opens co.edu.uniquindio.parcial2.pr2_parcial2 to javafx.fxml;

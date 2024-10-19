@@ -12,13 +12,7 @@ public class ClienteBuilder {
     protected String telefonoCelular;
     protected String direccion;
     protected int edad;
-    protected int cantidadPrestamos;
 
-
-    public ClienteBuilder cantidadPrestamos(int cantidadPrestamos) {
-        this.cantidadPrestamos = cantidadPrestamos;
-        return this;
-    }
     public ClienteBuilder cedula(String cedula) {
         this.cedula = cedula;
         return this;
@@ -60,8 +54,7 @@ public class ClienteBuilder {
                 telefonoFijo,
                 telefonoCelular,
                 direccion,
-                edad,
-                cantidadPrestamos
+                edad
         );
     }
 }

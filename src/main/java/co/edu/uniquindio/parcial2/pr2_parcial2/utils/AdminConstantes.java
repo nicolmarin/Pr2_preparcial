@@ -3,7 +3,7 @@ package co.edu.uniquindio.parcial2.pr2_parcial2.utils;
 public class AdminConstantes {
 
     public static final String HEADER = "Notificación";
-
+    public static final String HEADER_ERROR = "Error";
     public static final String TITULO_OBJETO_NO_ENCONTRADO = "El objeto no ha sido encontrado";
     public static final String TITULO_OBJETO_INGRESE_VALOR = "Ingrese un valor válido";
 

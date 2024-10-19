@@ -16,13 +16,7 @@ public class PrestamoBuilder {
     protected Empleado empleadoAsociado;
     protected Cliente clienteAsociado;
     protected List<Objeto> listaObjetosAsociados;
-    protected  int cantidadPrestamos;
 
-
-    public PrestamoBuilder cantidadPrestamos(int cantidadPrestamos) {
-        this.cantidadPrestamos = cantidadPrestamos;
-        return this;
-    }
 
     public PrestamoBuilder numeroPrestamo(String numeroPrestamo) {
         this.numeroPrestamo = numeroPrestamo;
@@ -67,8 +61,7 @@ public class PrestamoBuilder {
                 descripcion,
                 empleadoAsociado,
                 clienteAsociado,
-                listaObjetosAsociados,
-                cantidadPrestamos
+                listaObjetosAsociados
         );
     }
 }

@@ -11,7 +11,6 @@ public class Cliente {
     private String telefonoCelular;
     private String direccion;
     private int edad;
-    private int cantidadPrestamos;
 
     public Cliente(String cedula,
                    String nombreCliente,
@@ -20,8 +19,7 @@ public class Cliente {
                    String telefonoFijo,
                    String telefonoCelular,
                    String direccion,
-                   int edad,
-                   int cantidadPrestamos) {
+                   int edad) {
         this.cedula = cedula;
         this.nombreCliente = nombreCliente;
         this.apellido = apellido;
@@ -30,23 +28,17 @@ public class Cliente {
         this.telefonoCelular = telefonoCelular;
         this.direccion = direccion;
         this.edad = edad;
-        this.cantidadPrestamos = 0;
-    }
 
-    public void incrementarCantidadPrestamos() {
-        this.cantidadPrestamos++;
     }
-
     @Override
     public String toString() {
         return String.format("Cliente{cedula='%s', nombreCliente='%s', apellido='%s', email='%s', telefonoFijo='%s', telefonoCelular='%s', direccion='%s', edad=%d, cantidadPrestamos=%d}",
-                cedula, nombreCliente, apellido, email, telefonoFijo, telefonoCelular, direccion, edad, cantidadPrestamos);
+                cedula, nombreCliente, apellido, email, telefonoFijo, telefonoCelular, direccion, edad);
     }
     // Método estático para obtener el builder del cliente
     public static ClienteBuilder builder() {
         return new ClienteBuilder();
     }
-
     // --------------------------------- Getters ---------------------------------
     public String getCedula() {
         return cedula;
@@ -71,10 +63,6 @@ public class Cliente {
     }
     public int getEdad() {
         return edad;
-    }
-    // Método para obtener la cantidad de préstamos
-    public int getCantidadPrestamos() {
-        return cantidadPrestamos;
     }
     // ---------------------------------------------------------------------------------------------
 }

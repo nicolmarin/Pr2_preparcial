@@ -10,6 +10,7 @@ public class PrestamoObjeto extends Objeto {
     private List<Empleado> listaEmpleados = new ArrayList<>();
     private List<Objeto> listaObjetos = new ArrayList<>();
     private List<Prestamo> listaPrestamos = new ArrayList<>();
+    private CantidadPrestamos prestamos; // Asegúrate de que esta clase esté implementada
 
     public PrestamoObjeto(String idObjeto, String nombre, String estado) {
         super(idObjeto, nombre, estado);
@@ -61,13 +62,7 @@ public class PrestamoObjeto extends Objeto {
     // ---------------------------------------------------------------------
 
     // Método para crear un nuevo cliente
-    public boolean crearCliente(String cedula,
-                                String nombreCliente,
-                                String apellido,
-                                String email,
-                                String telefonoFijo,
-                                String telefonoCelular,
-                                String direccion) {
+    public boolean crearCliente(String cedula, String nombreCliente, String apellido, String email, String telefonoFijo, String telefonoCelular, String direccion) {
         if (obtenerCliente(cedula) == null) {
             Cliente cliente = Cliente.builder()
                     .cedula(cedula)
@@ -183,7 +178,8 @@ public class PrestamoObjeto extends Objeto {
     public List<Cliente> consultarClientesMayorPrestamos(int cantidadPrestamos) {
         List<Cliente> clientesFiltrados = new ArrayList<>();
         for (Cliente cliente : listaClientes) {
-            if (cliente.getCantidadPrestamos() >= cantidadPrestamos) {
+            // Asegúrate de tener un método que devuelva la cantidad de préstamos de un cliente
+            if (prestamos.getPrestamosPorCliente(cliente) >= cantidadPrestamos) {
                 clientesFiltrados.add(cliente);
             }
         }

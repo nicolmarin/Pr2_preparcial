@@ -6,10 +6,8 @@ public class Empleado extends Persona {
     private String idEmpleado;
     private String cargo;
     private PrestamoObjeto ownedByPrestamoUq;
-
     public Empleado() {
     }
-
     public Empleado(
             String idEmpleado,
             String nombre,
@@ -17,7 +15,7 @@ public class Empleado extends Persona {
             String cargo,
             String email,
             String telefono) {
-        super(nombre, apellido, email, telefono); // Llama al constructor de la clase base Persona
+        super(nombre, apellido, email, telefono);
         this.idEmpleado = idEmpleado;
         this.cargo = cargo;
     }
@@ -26,12 +24,10 @@ public class Empleado extends Persona {
     public static EmpleadoBuilder builder() {
         return new EmpleadoBuilder();
     }
-
     // Getters y Setters
     public String getIdEmpleado() {
         return idEmpleado;
     }
-
     public void setIdEmpleado(String idEmpleado) {
         this.idEmpleado = idEmpleado;
     }

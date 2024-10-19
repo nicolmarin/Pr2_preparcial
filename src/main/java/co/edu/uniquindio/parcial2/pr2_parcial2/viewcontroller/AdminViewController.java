@@ -58,7 +58,7 @@ public class AdminViewController {
     // ----------------------------- On Actions -----------------------------
     @FXML
     void onConsultarObjetosXEstado(ActionEvent event) {
-        consultarObjetoXEstado();
+        consultarObjetosPorEstado();
     }
 
     @FXML
@@ -73,29 +73,40 @@ public class AdminViewController {
 
     @FXML
     void onConsultarObjetosID(ActionEvent event) {
-        consultarObjetoID();
+        consultarObjetoPorID();
     }
 
     //-------------------------------------------------------------------
-    private void consultarObjetoID() {
+    private void consultarObjetoPorID() {
         String id = txtBuscarObjetoID.getText();
         if (validarCampoNoVacio(id, TITULO_OBJETO_INGRESE_VALOR)) {
-            ObjetoDto objetoDto = adminController.consultarObjetoPorID(id);
-            if (objetoDto != null) {
-                listaObjetosPorID.add(objetoDto);
-                listBuscarPorID.setItems(listaObjetosPorID);
-                mostrarMensaje("Objeto Encontrado", "Información", objetoDto.toString(), Alert.AlertType.INFORMATION);
-            } else {
+            try {
+                ObjetoDto objetoDto = adminController.consultarObjetoPorID(id);
+                if (objetoDto != null) {
+                    listaObjetosPorID.add(objetoDto);
+                    listBuscarPorID.setItems(listaObjetosPorID);
+                    mostrarMensaje("Objeto Encontrado", "Información", objetoDto.toString(), Alert.AlertType.INFORMATION);
+                }
+            } catch (IllegalArgumentException e) {
                 mostrarMensaje(TITULO_OBJETO_NO_ENCONTRADO, HEADER, BODY_ID_NO_ENCONTRADO, Alert.AlertType.ERROR);
             }
         }
     }
 
+
+
+
     private void consultarObjetosMayorPrestamos() {
         String rangoTexto = txtRangoOMayorPrestamos.getText();
         if (validarCampoNoVacio(rangoTexto, TITULO_OBJETO_INGRESE_VALOR)) {
-            listaObjetosMayorPrestamos.setAll(adminController.consultarObjetosMayorPrestamos(String.valueOf(Integer.parseInt(rangoTexto))));
-            listObjetosMayorPrestamos.setItems(listaObjetosMayorPrestamos);
+            try {
+                int rango = Integer.parseInt(rangoTexto);
+                listaObjetosMayorPrestamos.clear();
+                listaObjetosMayorPrestamos.setAll(adminController.consultarObjetosMayorPrestamos(String.valueOf(rango)));
+                listObjetosMayorPrestamos.setItems(listaObjetosMayorPrestamos);
+            } catch (NumberFormatException e) {
+                mostrarMensaje("Entrada no válida", HEADER_ERROR, BODY_NUMERO_NO_VALIDO, Alert.AlertType.ERROR);
+            }
         } else {
             mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_INGRESE_RANGO, Alert.AlertType.INFORMATION);
         }
@@ -106,18 +117,22 @@ public class AdminViewController {
         if (validarCampoNoVacio(cantidadTexto, BODY_INGRESE_CANTIDAD_CLIENTES)) {
             try {
                 int cantidadPrestamos = Integer.parseInt(cantidadTexto);
+                listaClientesMayorPrestamos.clear();
                 List<ClienteDto> clientes = adminController.consultarClientesMayorPrestamos(cantidadPrestamos);
                 listaClientesMayorPrestamos.setAll(FXCollections.observableArrayList(clientes));
                 listBuscarClientesMayorPrestamos.setItems(listaClientesMayorPrestamos);
             } catch (NumberFormatException e) {
-                mostrarMensaje("Entrada no válida", "Error", BODY_NUMERO_NO_VALIDO, Alert.AlertType.ERROR);
+                mostrarMensaje("Entrada no válida", HEADER_ERROR, BODY_NUMERO_NO_VALIDO, Alert.AlertType.ERROR);
             }
+        } else {
+            mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_INGRESE_RANGO, Alert.AlertType.INFORMATION);
         }
     }
 
-    private void consultarObjetoXEstado() {
+    private void consultarObjetosPorEstado() {
         String estado = txtEstado.getText();
         if (validarCampoNoVacio(estado, TITULO_OBJETO_INGRESE_VALOR)) {
+            listaObjetos.clear();
             listaObjetos.setAll(adminController.consultarObjetosPorEstado(estado));
             listObjetos.setItems(listaObjetos);
         } else {
@@ -151,6 +166,10 @@ public class AdminViewController {
             txtNombre.setText(objetoSeleccionado.nombre());
             txtID.setText(objetoSeleccionado.idObjeto());
             txtEstado.setText(objetoSeleccionado.estado());
+        } else {
+            txtNombre.clear();
+            txtID.clear();
+            txtEstado.clear();
         }
     }
 

@@ -24,33 +24,39 @@ public class ModelFactory implements IModelFactoryService {
         }
         return modelFactory;
     }
+
     // Constructor privado para inicializar el mapeador y los datos iniciales
     private ModelFactory() {
         mapper = new PrestamoMappingImpl();
         prestamoObjeto = DataUtil.inicializarDatos();
     }
+
     // Obtiene la lista de clientes y los transforma a DTO usando el mapeador
     @Override
     public List<ClienteDto> obtenerClientes() {
         return mapper.getClientesDto(prestamoObjeto.getListaClientes());
     }
+
     // Agrega un cliente a la lista, transformando el DTO en un objeto de dominio
     @Override
     public boolean agregarCliente(ClienteDto clienteDto) {
         Cliente cliente = mapper.clienteDtoToCliente(clienteDto);
         return prestamoObjeto.crearCliente(cliente);
     }
+
     // Obtiene la lista de objetos y los transforma a DTO usando el mapeador
     @Override
     public List<ObjetoDto> obtenerObjetos() {
         return mapper.getObjetosDto(prestamoObjeto.getListaObjetos());
     }
+
     // Agrega un objeto a la lista, transformando el DTO en un objeto de dominio
     @Override
     public boolean agregarObjeto(ObjetoDto objetoDto) {
         Objeto objeto = mapper.objetoDtoToObjeto(objetoDto);
         return prestamoObjeto.crearObjeto(objeto);
     }
+
     // Consultar objetos por estado
     @Override
     public List<ObjetoDto> consultarObjetosPorEstado(String estado) {
@@ -59,8 +65,8 @@ public class ModelFactory implements IModelFactoryService {
         }
         return mapper.getObjetosDto(prestamoObjeto.consultarObjetosPorEstado(estado));
     }
-    // FALTA IMPLEMENTAR LA LOGICA
-    // Consultar objetos con mayor cantidad de prestamos
+
+    // Consultar objetos con mayor cantidad de préstamos
     @Override
     public List<ObjetoDto> consultarObjetosMayorPrestamos(int rangoPrestamos) {
         if (rangoPrestamos < 0) {
@@ -83,13 +89,14 @@ public class ModelFactory implements IModelFactoryService {
         }
     }
 
-    // FALTA IMPLEMENTAR LA LOGICA
     // Consultar clientes con mayor cantidad de préstamos
     @Override
     public List<ClienteDto> consultarClientesMayorPrestamos(int rangoPrestamos) {
         if (rangoPrestamos < 0) {
             throw new IllegalArgumentException("El rango de préstamos debe ser mayor o igual a cero.");
         }
-        return mapper.getClientesDto(prestamoObjeto.consultarClientesMayorPrestamos(rangoPrestamos));
+        // Llama a la lógica en prestamoObjeto para obtener los clientes
+        List<Cliente> clientesConPrestamos = prestamoObjeto.consultarClientesMayorPrestamos(rangoPrestamos);
+        return mapper.getClientesDto(clientesConPrestamos);
     }
 }
