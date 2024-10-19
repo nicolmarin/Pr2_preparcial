@@ -69,11 +69,13 @@ public class ModelFactory implements IModelFactoryService {
     // Consultar objetos con mayor cantidad de préstamos
     @Override
     public List<ObjetoDto> consultarObjetosMayorPrestamos(int rangoPrestamos) {
-        if (rangoPrestamos < 0) {
+        if (rangoPrestamos < 1) {
             throw new IllegalArgumentException("El rango de préstamos debe ser mayor o igual a cero.");
         }
-        return mapper.getObjetosDto(prestamoObjeto.consultarObjetosMayorPrestamos(rangoPrestamos));
+        List<Objeto> objetosConPrestamo=prestamoObjeto.consultarObjetosMayorPrestamos(rangoPrestamos);
+        return mapper.getObjetosDto(objetosConPrestamo);
     }
+
 
     // Consultar un objeto por ID
     @Override
@@ -92,11 +94,13 @@ public class ModelFactory implements IModelFactoryService {
     // Consultar clientes con mayor cantidad de préstamos
     @Override
     public List<ClienteDto> consultarClientesMayorPrestamos(int rangoPrestamos) {
-        if (rangoPrestamos < 0) {
+        if (rangoPrestamos < 1) {
             throw new IllegalArgumentException("El rango de préstamos debe ser mayor o igual a cero.");
         }
         // Llama a la lógica en prestamoObjeto para obtener los clientes
         List<Cliente> clientesConPrestamos = prestamoObjeto.consultarClientesMayorPrestamos(rangoPrestamos);
         return mapper.getClientesDto(clientesConPrestamos);
     }
+    //consultar objetos con mayor numero de prestamos
+
 }

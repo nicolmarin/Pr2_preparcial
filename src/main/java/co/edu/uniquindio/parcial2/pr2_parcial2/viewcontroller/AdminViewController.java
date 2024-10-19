@@ -94,39 +94,54 @@ public class AdminViewController {
     }
 
 
-
-
     private void consultarObjetosMayorPrestamos() {
         String rangoTexto = txtRangoOMayorPrestamos.getText();
         if (validarCampoNoVacio(rangoTexto, TITULO_OBJETO_INGRESE_VALOR)) {
             try {
+                if (rangoTexto.equals("0")) {
+                    mostrarMensaje("Rango no válido", HEADER_ERROR, "El valor del rango no puede ser 0.", Alert.AlertType.ERROR);
+                    return;
+                }
                 int rango = Integer.parseInt(rangoTexto);
                 listaObjetosMayorPrestamos.clear();
-                listaObjetosMayorPrestamos.setAll(adminController.consultarObjetosMayorPrestamos(String.valueOf(rango)));
+                List<ObjetoDto> objetos = adminController.consultarObjetosMayorPrestamos(rango);
+                listaObjetosMayorPrestamos.setAll(FXCollections.observableArrayList(objetos));
                 listObjetosMayorPrestamos.setItems(listaObjetosMayorPrestamos);
+
             } catch (NumberFormatException e) {
                 mostrarMensaje("Entrada no válida", HEADER_ERROR, BODY_NUMERO_NO_VALIDO, Alert.AlertType.ERROR);
             }
         } else {
+
             mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_INGRESE_RANGO, Alert.AlertType.INFORMATION);
         }
     }
 
+
+
+
+
     private void consultarClientesMayorPrestamos() {
         String cantidadTexto = txtCantidadClientesMayorPrestamos.getText();
         if (validarCampoNoVacio(cantidadTexto, BODY_INGRESE_CANTIDAD_CLIENTES)) {
-            try {
-                int cantidadPrestamos = Integer.parseInt(cantidadTexto);
-                listaClientesMayorPrestamos.clear();
-                List<ClienteDto> clientes = adminController.consultarClientesMayorPrestamos(cantidadPrestamos);
-                listaClientesMayorPrestamos.setAll(FXCollections.observableArrayList(clientes));
-                listBuscarClientesMayorPrestamos.setItems(listaClientesMayorPrestamos);
-            } catch (NumberFormatException e) {
-                mostrarMensaje("Entrada no válida", HEADER_ERROR, BODY_NUMERO_NO_VALIDO, Alert.AlertType.ERROR);
-            }
-        } else {
-            mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_INGRESE_RANGO, Alert.AlertType.INFORMATION);
+
+                try {
+                    if (cantidadTexto.equals("0")) {
+                        mostrarMensaje("Rango no válido", HEADER_ERROR, "El valor del rango no puede ser 0.", Alert.AlertType.ERROR);
+                        return;
+                    }
+                    int cantidadPrestamos = Integer.parseInt(cantidadTexto);
+                    listaClientesMayorPrestamos.clear();
+                    List<ClienteDto> clientes = adminController.consultarClientesMayorPrestamos(cantidadPrestamos);
+                    listaClientesMayorPrestamos.setAll(FXCollections.observableArrayList(clientes));
+                    listBuscarClientesMayorPrestamos.setItems(listaClientesMayorPrestamos);
+                } catch (NumberFormatException e) {
+                    mostrarMensaje("Entrada no válida", HEADER_ERROR, BODY_NUMERO_NO_VALIDO, Alert.AlertType.ERROR);
+                }
+            } else {
+                mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_INGRESE_RANGO, Alert.AlertType.INFORMATION);
         }
+
     }
 
     private void consultarObjetosPorEstado() {

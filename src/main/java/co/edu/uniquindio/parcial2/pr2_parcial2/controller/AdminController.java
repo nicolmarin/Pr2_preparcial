@@ -33,15 +33,15 @@ public class AdminController {
     }
 
     // Consulta objetos con mayor cantidad de préstamos
-    public List<ObjetoDto> consultarObjetosMayorPrestamos(String rangoPrestamos) {
-        try {
-            int rango = Integer.parseInt(rangoPrestamos);
-            return modelFactory.consultarObjetosMayorPrestamos(rango);
-        } catch (NumberFormatException e) {
-            System.out.println(AdminConstantes.BODY_INGRESE_RANGO + ": " + e.getMessage());
-            return List.of(); // Devuelve una lista vacía en caso de error
+    public List<ObjetoDto> consultarObjetosMayorPrestamos(int rangoPrestamos) {
+        if (rangoPrestamos < 1) {
+            System.out.println("Rango invalido: El Rango de prestamos debe ser mayor o igual que cero");
+            return List.of();
+
         }
+        return modelFactory.consultarObjetosMayorPrestamos(rangoPrestamos);
     }
+
 
     // Consulta un objeto por su ID
     public ObjetoDto consultarObjetoPorID(String idObjeto) {
@@ -54,7 +54,7 @@ public class AdminController {
 
     // Consulta clientes con mayor cantidad de préstamos
     public List<ClienteDto> consultarClientesMayorPrestamos(int rangoPrestamos) {
-        if (rangoPrestamos < 0) {
+        if (rangoPrestamos < 1) {
             System.out.println("Rango inválido: El rango de préstamos debe ser mayor o igual a cero.");
             return List.of(); // Devuelve una lista vacía si el rango es inválido
         }

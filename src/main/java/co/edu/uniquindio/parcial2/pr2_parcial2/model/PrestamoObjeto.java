@@ -157,12 +157,14 @@ public class PrestamoObjeto extends Objeto {
     public List<Objeto> consultarObjetosMayorPrestamos(int cantidadPrestamos) {
         List<Objeto> objetosFiltrados = new ArrayList<>();
         for (Objeto objeto : listaObjetos) {
-            if (objeto.getCantidadObjetoPrestado() >= cantidadPrestamos) {
+            if (prestamos.getPrestamosPorObjeto(objeto) >= cantidadPrestamos) {
                 objetosFiltrados.add(objeto);
             }
         }
         return objetosFiltrados;
     }
+
+
 
     // Método para consultar un objeto por su ID
     public Objeto consultarObjetoPorID(String idObjeto) {
@@ -217,4 +219,5 @@ public class PrestamoObjeto extends Objeto {
         }
         return false;
     }
+
 }
