@@ -16,7 +16,6 @@ public interface IPrestamoUQ {
     void mostrarInformacionClientes();
     void buscarCliente(String cedula);
     boolean actualizarCliente(String cedulaActual, String nombre, String apellido, String cedula, int edad);
-
     boolean crearObjeto(String idObjeto, String descripcion);
     Objeto obtenerObjeto(String idObjeto);
     Empleado obtenerEmpleado(String cedulaEmpleado);

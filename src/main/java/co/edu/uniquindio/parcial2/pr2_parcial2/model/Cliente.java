@@ -64,5 +64,37 @@ public class Cliente {
     public int getEdad() {
         return edad;
     }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTelefonoFijo(String telefonoFijo) {
+        this.telefonoFijo = telefonoFijo;
+    }
+
+    public void setTelefonoCelular(String telefonoCelular) {
+        this.telefonoCelular = telefonoCelular;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
     // ---------------------------------------------------------------------------------------------
 }

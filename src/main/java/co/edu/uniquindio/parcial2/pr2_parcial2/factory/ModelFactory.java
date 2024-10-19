@@ -4,6 +4,7 @@ import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ClienteDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ObjetoDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.mappers.PrestamoMappingImpl;
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.Cliente;
+import co.edu.uniquindio.parcial2.pr2_parcial2.model.ClienteObjeto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.Objeto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.PrestamoObjeto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.service.IModelFactoryService;
@@ -15,6 +16,7 @@ import java.util.List;
 public class ModelFactory implements IModelFactoryService {
     private static ModelFactory modelFactory;
     private PrestamoObjeto prestamoObjeto;
+    private ClienteObjeto clienteObjeto;
     private IPrestamoMapping mapper;
 
     // Patrón Singleton con soporte para entornos multihilo
@@ -41,7 +43,12 @@ public class ModelFactory implements IModelFactoryService {
     @Override
     public boolean agregarCliente(ClienteDto clienteDto) {
         Cliente cliente = mapper.clienteDtoToCliente(clienteDto);
-        return prestamoObjeto.crearCliente(cliente);
+        return ClienteObjeto.crearCliente(cliente);
+    }
+
+    @Override
+    public boolean eliminarCliente(ClienteDto clienteDto) {
+
     }
 
     // Obtiene la lista de objetos y los transforma a DTO usando el mapeador
