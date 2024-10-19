@@ -101,6 +101,7 @@ public class ModelFactory implements IModelFactoryService {
         List<Cliente> clientesConPrestamos = prestamoObjeto.consultarClientesMayorPrestamos(rangoPrestamos);
         return mapper.getClientesDto(clientesConPrestamos);
     }
-    //consultar objetos con mayor numero de prestamos
+
+
 
 }
