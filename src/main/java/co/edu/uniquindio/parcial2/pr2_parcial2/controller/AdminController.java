@@ -37,7 +37,6 @@ public class AdminController {
         if (rangoPrestamos < 1) {
             System.out.println("Rango invalido: El Rango de prestamos debe ser mayor o igual que cero");
             return List.of();
-
         }
         return modelFactory.consultarObjetosMayorPrestamos(rangoPrestamos);
     }
@@ -56,7 +55,7 @@ public class AdminController {
     public List<ClienteDto> consultarClientesMayorPrestamos(int rangoPrestamos) {
         if (rangoPrestamos < 1) {
             System.out.println("Rango inválido: El rango de préstamos debe ser mayor o igual a cero.");
-            return List.of(); // Devuelve una lista vacía si el rango es inválido
+            return List.of();
         }
         return modelFactory.consultarClientesMayorPrestamos(rangoPrestamos);
     }

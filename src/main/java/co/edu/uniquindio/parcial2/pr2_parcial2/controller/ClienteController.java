@@ -7,15 +7,24 @@ import java.util.List;
 
 public class ClienteController {
     ModelFactory modelFactory;
-    public ClienteController(){
+
+    public ClienteController() {
         modelFactory = ModelFactory.getInstancia();
     }
+
     public List<ClienteDto> obtenerClientes() {
         return modelFactory.obtenerClientes();
     }
-    public
 
     public boolean agregarCliente(ClienteDto clienteDto) {
         return modelFactory.agregarCliente(clienteDto);
     }
+
+    public void actualizarCliente(ClienteDto clienteDto) {
+        modelFactory.actualizarCliente(clienteDto);
+    }
+    public void eliminarCliente(ClienteDto clienteSeleccionado) {
+        modelFactory.eliminarCliente(clienteSeleccionado);
+    }
+
 }

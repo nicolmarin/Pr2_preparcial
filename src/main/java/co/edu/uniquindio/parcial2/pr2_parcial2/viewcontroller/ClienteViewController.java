@@ -9,21 +9,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.net.URL;
 import java.util.Optional;
-import java.util.ResourceBundle;
 
-import static co.edu.uniquindio.parcial2.pr2_parcial2.utils.PrestamoConstantes.*;
+import static co.edu.uniquindio.parcial2.pr2_parcial2.utils.ClienteConstantes.*;
 
 public class ClienteViewController {
     ClienteController clienteController;
     ObservableList<ClienteDto> listaClientes = FXCollections.observableArrayList();
     ClienteDto clienteSeleccionado;
-
-    @FXML
-    private ResourceBundle resources;
-    @FXML
-    private URL location;
 
     // ----------------------------- Buttons -----------------------------
     @FXML
@@ -68,9 +61,11 @@ public class ClienteViewController {
     // ----------------------------- On Actions -----------------------------
     @FXML
     void onActualizarCliente(ActionEvent event) {
+        actualizarCliente();
     }
     @FXML
     void onEliminarCliente(ActionEvent event) {
+        eliminarCliente();
     }
     @FXML
     void onNuevoCliente(ActionEvent event) {
@@ -98,33 +93,53 @@ public class ClienteViewController {
     private void initDataBinding() {
         tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombreCliente()));
         tcApellido.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().apellido()));
-        tcCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().cedula()));
         tcEmail.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().email()));
+        tcCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().cedula()));
         tcDireccion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().direccion()));
     }
-
-
-
 
     private void obtenerClientes() {
        listaClientes.addAll(clienteController.obtenerClientes());
     }
 
-
     private void listenerSelection() {
-        tableCliente.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+        tableCliente.getSelectionModel().selectedItemProperty().addListener((_, _, newSelection) -> {
             clienteSeleccionado = newSelection;
             mostrarInformacionCliente(clienteSeleccionado);
         });
     }
 
+    private void actualizarCliente (){
+        if (clienteSeleccionado != null) {
+            ClienteDto actualizarCliente = crearClienteDto();
+            if (datosValidos(actualizarCliente)) {
+                clienteController.actualizarCliente(actualizarCliente);
+                listaClientes.set(listaClientes.indexOf(clienteSeleccionado), actualizarCliente);
+                mostrarInformacionCliente(actualizarCliente);
+                mostrarMensaje(TITULO_CLIENTE_ACTUALIZADO,HEADER, BODY_CLIENTE_ACTUALIZADO, Alert.AlertType.INFORMATION);
+            } else {
+                mostrarMensaje(TITULO_INCOMPLETO, HEADER, BODY_INCOMPLETO, Alert.AlertType.WARNING);
+            }
+        } else {
+            mostrarMensaje(TITULO_CLIENTE_NO_SELECCIONADO, HEADER, BODY_CLIENTE_NO_SELECCIONADO, Alert.AlertType.WARNING);
+        }
+
+    }
+
+    private void eliminarCliente (){
+        if (clienteSeleccionado != null) {
+            clienteController.eliminarCliente(clienteSeleccionado);
+            listaClientes.remove(clienteSeleccionado);
+            limpiarCampos();
+            mostrarMensaje(TITULO_CLIENTE_REMOVIDO, HEADER, BODY_CLIENTE_REMOVIDO, Alert.AlertType.INFORMATION);
+        } else {
+            mostrarMensaje(TITULO_CLIENTE_NO_REMOVIDO,HEADER, BODY_CLIENTE_NO_REMOVIDO, Alert.AlertType.WARNING);
+        }
+
+    }
     private void agregarCliente() {
-        //1. Captura los datos del formulario
-        //2. Armar un Dto con los datos
         ClienteDto clienteDto = crearClienteDto();
-        //3.Validar campos
-        if(datosValidos(clienteDto)){
-            //4. Solicitar crear cliente
+        if(datosValidos(clienteDto) && clienteDuplicado(clienteDto)){
             if(clienteController.agregarCliente(clienteDto)){
                 listaClientes.addAll(clienteDto);
                 limpiarCampos();
@@ -135,6 +150,18 @@ public class ClienteViewController {
         }else{
             mostrarMensaje(TITULO_INCOMPLETO, HEADER, BODY_INCOMPLETO,Alert.AlertType.WARNING);
         }
+    }
+
+    private boolean clienteDuplicado(ClienteDto clienteDto) {
+        boolean nombreDuplicado = listaClientes.stream().anyMatch(c ->
+                c.nombreCliente().equalsIgnoreCase(clienteDto.nombreCliente()) &&
+                        c.apellido().equalsIgnoreCase(clienteDto.apellido()));
+
+        if (nombreDuplicado) {
+            mostrarMensaje(TITULO_CLIENTE_NO_AGREGADO, HEADER, "Ya existe un cliente con ese nombre y apellido.", Alert.AlertType.WARNING);
+            return false;
+        }
+        return true;
     }
 
     private void limpiarCampos() {
@@ -155,17 +182,13 @@ public class ClienteViewController {
     }
 
     private boolean datosValidos(ClienteDto clienteDto) {
-        if(clienteDto.nombreCliente().isBlank() ||
-           clienteDto.apellido().isBlank() ||
-           clienteDto.cedula().isBlank() ||
-           clienteDto.email().isBlank() ||
-           clienteDto.direccion().isBlank()
-        ){
-            return false;
-        }else{
-            return true;
-        }
+        return !clienteDto.nombreCliente().isBlank() &&
+                !clienteDto.apellido().isBlank() &&
+                !clienteDto.cedula().isBlank() &&
+                !clienteDto.email().isBlank() &&
+                !clienteDto.direccion().isBlank();
     }
+
 
     private void mostrarInformacionCliente(ClienteDto clienteSeleccionado) {
         if(clienteSeleccionado != null){
@@ -189,12 +212,6 @@ public class ClienteViewController {
         alert.setTitle("Confirmación");
         alert.setContentText(mensaje);
         Optional<ButtonType> action = alert.showAndWait();
-        if (action.get() == ButtonType.OK) {
-            return true;
-        } else {
-            return false;
-        }
+        return action.get() == ButtonType.OK;
     }
-
-
 }

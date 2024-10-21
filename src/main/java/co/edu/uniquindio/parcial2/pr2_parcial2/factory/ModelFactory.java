@@ -31,6 +31,7 @@ public class ModelFactory implements IModelFactoryService {
     private ModelFactory() {
         mapper = new PrestamoMappingImpl();
         prestamoObjeto = DataUtil.inicializarDatos();
+        clienteObjeto = new ClienteObjeto();
     }
 
     // Obtiene la lista de clientes y los transforma a DTO usando el mapeador
@@ -43,12 +44,19 @@ public class ModelFactory implements IModelFactoryService {
     @Override
     public boolean agregarCliente(ClienteDto clienteDto) {
         Cliente cliente = mapper.clienteDtoToCliente(clienteDto);
-        return ClienteObjeto.crearCliente(cliente);
+        return clienteObjeto.crearCliente(cliente);
     }
 
-    @Override
-    public boolean eliminarCliente(ClienteDto clienteDto) {
+    // Elimina un cliente
+    public void eliminarCliente(ClienteDto clienteDto) {
+        Cliente cliente = mapper.clienteDtoToCliente(clienteDto);
+        clienteObjeto.eliminarCliente(cliente);
+    }
 
+    // Actualiza un cliente existente
+    public void actualizarCliente(ClienteDto clienteDto) {
+        Cliente cliente = mapper.clienteDtoToCliente(clienteDto);
+        clienteObjeto.actualizarCliente(cliente);
     }
 
     // Obtiene la lista de objetos y los transforma a DTO usando el mapeador
@@ -104,11 +112,8 @@ public class ModelFactory implements IModelFactoryService {
         if (rangoPrestamos < 1) {
             throw new IllegalArgumentException("El rango de préstamos debe ser mayor o igual a cero.");
         }
-        // Llama a la lógica en prestamoObjeto para obtener los clientes
         List<Cliente> clientesConPrestamos = prestamoObjeto.consultarClientesMayorPrestamos(rangoPrestamos);
         return mapper.getClientesDto(clientesConPrestamos);
     }
-
-
 
 }

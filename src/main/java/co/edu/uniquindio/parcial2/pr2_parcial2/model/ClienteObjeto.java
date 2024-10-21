@@ -47,7 +47,7 @@ public class ClienteObjeto implements IClienteCrud {
         return false;
     }
     // Actualiza el cliente existente
-    @Override
+
     public void actualizarCliente(Cliente clienteActualizado) {
         if (clienteActualizado != null) {
             Cliente clienteExistente = obtenerCliente(clienteActualizado.getCedula());
@@ -64,7 +64,6 @@ public class ClienteObjeto implements IClienteCrud {
         }
     }
     // Metodo para eliminar un Cliente
-    @Override
     public void eliminarCliente(Cliente cliente) {
         if(cliente != null ) {
             listaClientes.remove(cliente);
