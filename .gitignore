@@ -36,3 +36,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### patron adapter###
+tenemos el patron adapter en el que lo tomaremos como un intermediario para reutilizar codigo antiguo sin necesidad
+de configurarlo
