@@ -1,6 +1,6 @@
 package Adapter.model;
 
-import Adapter.PasarelaPago;
+import Adapter.services.PasarelaPago;
 
 public class PayPalApi implements PasarelaPago {
     @Override

@@ -17,6 +17,5 @@ public class Negocio {
         empleado1.mostrarCargos();
         empleado2.mostrarInformacion();
         empleado2.mostrarCargos();
-
     }
 }

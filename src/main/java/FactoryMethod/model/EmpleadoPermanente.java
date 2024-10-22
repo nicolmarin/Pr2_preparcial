@@ -1,8 +1,6 @@
 package FactoryMethod.model;
 
 public class EmpleadoPermanente extends Empleado {
-
-
     public EmpleadoPermanente(String nombre, String idEmpleado) {
         super(nombre, idEmpleado);
     }

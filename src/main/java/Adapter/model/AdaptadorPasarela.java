@@ -1,7 +1,7 @@
 package Adapter.model;
 
-import Adapter.PagoHeredado;
-import Adapter.PasarelaPago;
+import Adapter.services.PagoHeredado;
+import Adapter.services.PasarelaPago;
 
 public class AdaptadorPasarela implements PagoHeredado {
     private PasarelaPago adaptador;
