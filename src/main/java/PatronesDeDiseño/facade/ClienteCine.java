@@ -1,11 +1,19 @@
 package PatronesDeDiseño.facade;
 
-
 import java.time.LocalDate;
 
 public class ClienteCine {
     public static void main(String[] args) {
-        CineFacade cineFacade = new CineFacade();
-        cineFacade.realizarCompraCine("Barbie",(LocalDate.of(2023, 10, 2)),"VIP", "4D", 20, 10, "Big Mac Super Ultra");
+
+        String pelicula = "Barbie";
+        LocalDate horario = LocalDate.of(2023, 10, 2);
+        String clase = "VIP";
+        String dimension = "4D";
+        int numero = 20;
+        int fila = 10;
+        String combo = "Big Mac Super Ultra";
+
+        CineFacade cineFacade = new CineFacade(pelicula, horario, clase, dimension, numero, fila, combo);
+        cineFacade.realizarCompraCine(pelicula, horario, clase, dimension, numero, fila, combo);
     }
 }
