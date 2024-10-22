@@ -8,6 +8,7 @@ public class AsientoService extends Asiento {
         super(numero, fila);
     }
 
+
     public void seleccionarAsiento(int fila, int numero){
         System.out.println("Asiento seleccionado: Fila" + fila + " , Numero: " + numero + ".");
     }

@@ -14,6 +14,16 @@ public class CineFacade {
     private ComidaService comidaService;
     private SalaService salaService;
 
+
+    public CineFacade(String pelicula, LocalDate horario, String clase, String dimension, int numero, int fila, String combo){
+        boletoService = new BoletoService(pelicula, horario );
+        asientoService = new AsientoService(numero, fila);
+        comidaService = new ComidaService(combo);
+        salaService = new SalaService(clase, dimension);
+    }
+
+
+
     public void realizarCompraCine (String pelicula, LocalDate horario, String clase, String dimension, int numero, int fila, String combo){
         boletoService.comprarBoleto(pelicula, horario);
         asientoService.seleccionarAsiento(fila, numero);
