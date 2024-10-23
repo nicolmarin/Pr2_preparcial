@@ -15,7 +15,6 @@ public class VehiculoPrototype {
         ChevroletClonado.setMarca("Chevrolet");
         ChevroletClonado.setModelo("2023 - Onix");
 
-
         System.out.println("------- Auto Deportivo  -------");
         System.out.println("Original:");
         System.out.println(Ferrari);

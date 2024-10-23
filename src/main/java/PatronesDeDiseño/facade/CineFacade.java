@@ -24,6 +24,7 @@ public class CineFacade {
 
 
 
+
     public void realizarCompraCine (String pelicula, LocalDate horario, String clase, String dimension, int numero, int fila, String combo){
         boletoService.comprarBoleto(pelicula, horario);
         asientoService.seleccionarAsiento(fila, numero);

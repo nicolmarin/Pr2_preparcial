@@ -15,4 +15,5 @@ public class AutoDeportivo extends Vehiculo implements IVehiculo {
     public String toString(){
         return "Auto Deportivo: " + super.toString();
     }
+
 }
