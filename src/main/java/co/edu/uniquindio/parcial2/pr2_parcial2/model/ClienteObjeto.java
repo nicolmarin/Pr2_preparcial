@@ -89,10 +89,11 @@ public class ClienteObjeto implements IClienteCrud {
 
     public Cliente consultarClientePorCedula(String cedula) {
         for (Cliente cliente : listaClientes) {
-            if (cliente.getCedula().equalsIgnoreCase(cedula)) {
+            if (cliente.getCedula().equals(cedula)) {
                 return cliente;
             }
         }
         return null;
     }
+
 }

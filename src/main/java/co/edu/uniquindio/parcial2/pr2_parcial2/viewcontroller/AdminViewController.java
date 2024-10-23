@@ -4,7 +4,6 @@ import co.edu.uniquindio.parcial2.pr2_parcial2.controller.AdminController;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ClienteDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.EmpleadoDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ObjetoDto;
-import co.edu.uniquindio.parcial2.pr2_parcial2.model.Empleado;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,15 +27,10 @@ public class AdminViewController {
 
 
     @FXML
-    private Button btnConsultarEmpleadosMayorPrestamos;
-
-    @FXML
     private ListView<EmpleadoDto> listBuscarEmpleadosMayorPrestamos;
-
 
     @FXML
     private TextField txtCantidadEmpleadosMayorPrestamos;
-
 
     @FXML
     void onConsultarEmpleadosMayorPrestamos(ActionEvent event) {
@@ -97,6 +91,17 @@ public class AdminViewController {
     private Button btnConsultarObjetosXEstado;
     @FXML
     private Button btnConsultarClientesMayorPrestamos;
+    @FXML
+    private Button btnConsultarEmpleadosMayorPrestamos;
+
+    @FXML
+    private Button btnVerAsociados;
+
+    @FXML
+    private Button btnVerNoAsociados;
+
+    @FXML
+    private Button btnVerTodos;
 
     // ----------------------------- On Actions -----------------------------
     @FXML
@@ -119,7 +124,42 @@ public class AdminViewController {
         consultarClientePorCedula();
     }
 
-    //-------------------------------------------------------------------
+    @FXML
+    void onVerAsociados(ActionEvent event) {
+        verAsociados();
+    }
+
+    @FXML
+    void onVerNoAsociados(ActionEvent event) {
+        verNoAsociados();
+    }
+
+    @FXML
+    void onVerTodos(ActionEvent event) {
+        verTodos();
+    }
+
+    private void verTodos() {
+        listaObjetos.clear();
+        List<ObjetoDto> todosObjetos = adminController.obtenerObjetos();
+        listaObjetos.setAll(FXCollections.observableArrayList(todosObjetos));
+        listObjetos.setItems(listaObjetos);
+    }
+
+    private void verAsociados() {
+        listaObjetos.clear();
+        List<ObjetoDto> objetosAsociados = adminController.consultarObjetosConPrestamos();
+        listaObjetos.setAll(FXCollections.observableArrayList(objetosAsociados));
+        listObjetos.setItems(listaObjetos);
+    }
+
+    private void verNoAsociados() {
+        listaObjetos.clear();
+        List<ObjetoDto> objetosNoAsociados = adminController.consultarObjetosSinPrestamos();
+        listaObjetos.setAll(FXCollections.observableArrayList(objetosNoAsociados));
+        listObjetos.setItems(listaObjetos);
+    }
+
     private void consultarClientePorCedula() {
         String cedula = txtBuscarClientePorCedula.getText();
         if (validarCampoNoVacio(cedula, TITULO_OBJETO_INGRESE_VALOR)) {
@@ -128,14 +168,15 @@ public class AdminViewController {
                 if (clienteDto != null) {
                     listaClientesPorCedula.add(clienteDto);
                     listBuscarPorCedula.setItems(listaClientesPorCedula);
-                    mostrarMensaje("Objeto Encontrado", "Información", clienteDto.toString(), Alert.AlertType.INFORMATION);
+                    mostrarMensaje("Cliente Encontrado", "Información", clienteDto.toString(), Alert.AlertType.INFORMATION);
+                } else {
+                    mostrarMensaje(TITULO_OBJETO_NO_ENCONTRADO, HEADER, BODY_ID_NO_ENCONTRADO, Alert.AlertType.ERROR);
                 }
             } catch (IllegalArgumentException e) {
-                mostrarMensaje(TITULO_OBJETO_NO_ENCONTRADO, HEADER, BODY_ID_NO_ENCONTRADO, Alert.AlertType.ERROR);
+                mostrarMensaje(TITULO_OBJETO_NO_ENCONTRADO, HEADER, e.getMessage(), Alert.AlertType.ERROR);
             }
         }
     }
-
 
     private void consultarObjetosMayorPrestamos() {
         String rangoTexto = txtRangoOMayorPrestamos.getText();
@@ -155,133 +196,56 @@ public class AdminViewController {
                 mostrarMensaje("Entrada no válida", HEADER_ERROR, BODY_NUMERO_NO_VALIDO, Alert.AlertType.ERROR);
             }
         } else {
-
             mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_INGRESE_RANGO, Alert.AlertType.INFORMATION);
         }
     }
 
-        private void consultarClientesMayorPrestamos() {
+    private void consultarClientesMayorPrestamos() {
         String cantidadTexto = txtCantidadClientesMayorPrestamos.getText();
         if (validarCampoNoVacio(cantidadTexto, BODY_INGRESE_CANTIDAD_CLIENTES)) {
-                try {
-                    if (cantidadTexto.equals("0")) {
-                        mostrarMensaje("Rango no válido", HEADER_ERROR, "El valor del rango no puede ser 0.", Alert.AlertType.ERROR);
-                        return;
-                    }
-                    int cantidadPrestamos = Integer.parseInt(cantidadTexto);
-                    listaClientesMayorPrestamos.clear();
-                    List<ClienteDto> clientes = adminController.consultarClientesMayorPrestamos(cantidadPrestamos);
-                    listaClientesMayorPrestamos.setAll(FXCollections.observableArrayList(clientes));
-                    listBuscarClientesMayorPrestamos.setItems(listaClientesMayorPrestamos);
-                } catch (NumberFormatException e) {
-                    mostrarMensaje("Entrada no válida", HEADER_ERROR, BODY_NUMERO_NO_VALIDO, Alert.AlertType.ERROR);
+            try {
+                if (cantidadTexto.equals("0")) {
+                    mostrarMensaje("Rango no válido", HEADER_ERROR, "El valor del rango no puede ser 0.", Alert.AlertType.ERROR);
+                    return;
                 }
-            } else {
-                mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_INGRESE_RANGO, Alert.AlertType.INFORMATION);
+                int cantidadPrestamos = Integer.parseInt(cantidadTexto);
+                listaClientesMayorPrestamos.clear();
+                List<ClienteDto> clientes = adminController.consultarClientesMayorPrestamos(cantidadPrestamos);
+                listaClientesMayorPrestamos.setAll(FXCollections.observableArrayList(clientes));
+                listBuscarClientesMayorPrestamos.setItems(listaClientesMayorPrestamos);
+            } catch (NumberFormatException e) {
+                mostrarMensaje("Entrada no válida", HEADER_ERROR, BODY_NUMERO_NO_VALIDO, Alert.AlertType.ERROR);
+            }
+        } else {
+            mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_INGRESE_RANGO, Alert.AlertType.INFORMATION);
         }
-
     }
 
     private void consultarObjetosPorEstado() {
         String estado = txtEstado.getText();
         if (validarCampoNoVacio(estado, TITULO_OBJETO_INGRESE_VALOR)) {
             listaObjetos.clear();
-            listaObjetos.setAll(adminController.consultarObjetosPorEstado(estado));
+            List<ObjetoDto> objetos = adminController.consultarObjetosPorEstado(estado);
+            listaObjetos.setAll(FXCollections.observableArrayList(objetos));
             listObjetos.setItems(listaObjetos);
         } else {
-            mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_INGRESE_ESTADO, Alert.AlertType.INFORMATION);
+            mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, "Ingrese el valor", Alert.AlertType.INFORMATION);
         }
     }
 
-    // ----------------------------- Métodos de inicialización -----------------------------
-    @FXML
-    void initialize() {
-        adminController = new AdminController();
-        initDataBinding();
-        cargarObjetos();
-        listenerSelection();
-    }
-
-    private void cargarObjetos() {
-        listaObjetos.setAll(adminController.obtenerObjetos());
-        listObjetos.setItems(listaObjetos);
-    }
-
-    private void listenerSelection() {
-        listObjetos.getSelectionModel().selectedItemProperty().addListener((_, _, newSelection) -> {
-            objetoSeleccionado = newSelection;
-            mostrarInformacionDeObjeto(objetoSeleccionado);
-        });
-    }
-
-    private void mostrarInformacionDeObjeto(ObjetoDto objetoSeleccionado) {
-        if (objetoSeleccionado != null) {
-            txtNombre.setText(objetoSeleccionado.nombre());
-            txtID.setText(objetoSeleccionado.idObjeto());
-            txtEstado.setText(objetoSeleccionado.estado());
-        } else {
-            txtNombre.clear();
-            txtID.clear();
-            txtEstado.clear();
-        }
-    }
-
-    private void initDataBinding() {
-        listObjetos.setCellFactory(lv -> new ListCell<ObjetoDto>() {
-            @Override
-            protected void updateItem(ObjetoDto item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(empty || item == null ? null : "ID: " + item.idObjeto() + " - Nombre: " + item.nombre());
-            }
-        });
-
-        listBuscarPorCedula.setCellFactory(lv -> new ListCell<ClienteDto>() {
-            @Override
-            protected void updateItem(ClienteDto item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(empty || item == null ? null : "ID: " + item.cedula() + " - Nombre: " + item.nombreCliente());
-            }
-        });
-
-        listBuscarClientesMayorPrestamos.setCellFactory(lv -> new ListCell<ClienteDto>() {
-            @Override
-            protected void updateItem(ClienteDto item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(empty || item == null ? null : "Cliente: " + item.nombreCliente());
-            }
-        });
-
-        listBuscarEmpleadosMayorPrestamos.setCellFactory(lv -> new ListCell<EmpleadoDto>() {
-            @Override
-            protected void updateItem(EmpleadoDto item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(empty || item == null ? null : "Empleado - ID: " + item.idEmpleado()+" Nombre: "+ item.nombre() + " Apellido: "+item.apellido()+ " Cargo: "+item.cargo()+" Email:"+ item.email()+ " Telefono: "+item.telefono()+".");
-            }
-        });
-
-        listObjetosMayorPrestamos.setCellFactory(lv -> new ListCell<ObjetoDto>() {
-            @Override
-            protected void updateItem(ObjetoDto item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(empty || item == null ? null : "ID: " + item.idObjeto() + " - Préstamos: " + item.nombre());
-            }
-        });
-    }
-
-    private void mostrarMensaje(String titulo, String header, String contenido, Alert.AlertType alertType) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(titulo);
-        alert.setHeaderText(header);
-        alert.setContentText(contenido);
-        alert.showAndWait();
-    }
-
-    private boolean validarCampoNoVacio(String texto, String tituloError) {
-        if (texto.isEmpty()) {
-            mostrarMensaje(tituloError, HEADER, BODY_INCOMPLETO, Alert.AlertType.ERROR);
+    private boolean validarCampoNoVacio(String valor, String mensaje) {
+        if (valor.trim().isEmpty()) {
+            mostrarMensaje("Campo Vacío", "Error", mensaje, Alert.AlertType.WARNING);
             return false;
         }
         return true;
     }
 
+    private void mostrarMensaje(String titulo, String encabezado, String contenido, Alert.AlertType tipo) {
+        Alert alert = new Alert(tipo);
+        alert.setTitle(titulo);
+        alert.setHeaderText(encabezado);
+        alert.setContentText(contenido);
+        alert.showAndWait();
+    }
 }

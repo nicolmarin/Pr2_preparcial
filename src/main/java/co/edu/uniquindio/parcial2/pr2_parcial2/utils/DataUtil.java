@@ -1,10 +1,6 @@
 package co.edu.uniquindio.parcial2.pr2_parcial2.utils;
 
-import co.edu.uniquindio.parcial2.pr2_parcial2.model.Cliente;
-import co.edu.uniquindio.parcial2.pr2_parcial2.model.Empleado;
-import co.edu.uniquindio.parcial2.pr2_parcial2.model.Objeto;
-import co.edu.uniquindio.parcial2.pr2_parcial2.model.Prestamo;
-import co.edu.uniquindio.parcial2.pr2_parcial2.model.PrestamoObjeto;
+import co.edu.uniquindio.parcial2.pr2_parcial2.model.*;
 
 
 import java.util.ArrayList;
@@ -15,6 +11,7 @@ public class DataUtil {
 
     public static PrestamoObjeto inicializarDatos() {
         PrestamoObjeto prestamoObjeto = new PrestamoObjeto();
+        ClienteObjeto clienteObjeto = new ClienteObjeto();
 
         // ------------------- Instancias de Empleado -------------------
         Empleado empleado1 = Empleado.builder()
@@ -195,6 +192,13 @@ public class DataUtil {
         prestamoObjeto.getListaObjetos().add(objeto5);
         prestamoObjeto.getListaObjetos().add(objeto6);
         prestamoObjeto.getListaObjetos().add(objetoSinPrestamo);  // Objeto sin préstamo
+
+        // Agregar clientes a ClienteObjeto
+        clienteObjeto.getListaClientes().add(cliente1);
+        clienteObjeto.getListaClientes().add(cliente2);
+        clienteObjeto.getListaClientes().add(cliente3);
+        clienteObjeto.getListaClientes().add(cliente4);
+        clienteObjeto.getListaClientes().add(cliente5);
 
         // Agregar clientes a PrestamoObjeto
         prestamoObjeto.getListaClientes().add(cliente1);

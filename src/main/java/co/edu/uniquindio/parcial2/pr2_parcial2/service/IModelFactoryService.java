@@ -11,7 +11,8 @@ public interface IModelFactoryService {
 
     List<ClienteDto> obtenerClientes();
     boolean agregarCliente(ClienteDto clienteDto);
-
+    List<ObjetoDto> consultarObjetosConPrestamos();
+    List<ObjetoDto> consultarObjetosSinPrestamos();
 
 
     List<ObjetoDto> consultarObjetosPorEstado(String estado);
