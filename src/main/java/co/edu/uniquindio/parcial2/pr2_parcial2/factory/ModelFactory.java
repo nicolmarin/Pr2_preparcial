@@ -90,6 +90,9 @@ public class ModelFactory implements IModelFactoryService {
     }
 
 
+    // Consultar un objeto por ID
+
+
     // Consultar clientes con mayor cantidad de préstamos
     @Override
     public List<ClienteDto> consultarClientesMayorPrestamos(int rangoPrestamos) {
@@ -110,32 +113,16 @@ public class ModelFactory implements IModelFactoryService {
 
 
 
-    // Método centralizado para consultar cliente por cédula
+    @Override
     public ClienteDto consultarClientePorCedula(String cedula) {
         if (cedula == null || cedula.isEmpty()) {
-            throw new IllegalArgumentException("La cédula no puede estar vacía.");
+            throw new IllegalArgumentException("El ID del objeto no puede estar vacío.");
         }
-
         Cliente cliente = clienteObjeto.consultarClientePorCedula(cedula);
         if (cliente != null) {
             return mapper.clienteToClienteDto(cliente);
         } else {
-            throw new IllegalArgumentException("No se encontró ningún cliente con la cédula proporcionada.");
+            throw new IllegalArgumentException("No se encontró ningún objeto con el ID proporcionado.");
         }
     }
-
-    // Consulta objetos que tienen al menos un préstamo asociado
-    @Override
-    public List<ObjetoDto> consultarObjetosConPrestamos() {
-        List<Objeto> objetosConPrestamos = prestamoObjeto.consultarObjetosConPrestamos();
-        return mapper.getObjetosDto(objetosConPrestamos);
-    }
-
-    // Consulta objetos que no tienen ningún préstamo asociado
-    @Override
-    public List<ObjetoDto> consultarObjetosSinPrestamos() {
-        List<Objeto> objetosSinPrestamos = prestamoObjeto.consultarObjetosSinPrestamos();
-        return mapper.getObjetosDto(objetosSinPrestamos);
-    }
-
 }

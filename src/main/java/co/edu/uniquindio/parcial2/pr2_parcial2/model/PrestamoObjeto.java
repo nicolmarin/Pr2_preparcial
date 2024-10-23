@@ -121,6 +121,18 @@ public class PrestamoObjeto extends Objeto {
         return objetosFiltrados;
     }
 
+
+
+    // Método para consultar un objeto por su ID
+    public Cliente consultarClientePorCedula(String cedula) {
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getCedula().equalsIgnoreCase(cedula)) {
+                return cliente;
+            }
+        }
+        return null;
+    }
+
     // Consulta clientes con mayor cantidad de préstamos
     public List<Cliente> consultarClientesMayorPrestamos(int cantidadPrestamos) {
         List<Cliente> clientesFiltrados = new ArrayList<>();
@@ -142,25 +154,5 @@ public class PrestamoObjeto extends Objeto {
         return empleadosFiltrados;
     }
 
-    // Método para obtener objetos con al menos un préstamo
-    public List<Objeto> consultarObjetosConPrestamos() {
-        List<Objeto> objetosConPrestamos = new ArrayList<>();
-        for (Objeto objeto : listaObjetos) {
-            if (prestamos.getPrestamosPorObjeto(objeto) > 0) {
-                objetosConPrestamos.add(objeto);
-            }
-        }
-        return objetosConPrestamos;
-    }
 
-    // Método para obtener objetos sin préstamos
-    public List<Objeto> consultarObjetosSinPrestamos() {
-        List<Objeto> objetosSinPrestamos = new ArrayList<>();
-        for (Objeto objeto : listaObjetos) {
-            if (prestamos.getPrestamosPorObjeto(objeto) == 0) {
-                objetosSinPrestamos.add(objeto);
-            }
-        }
-        return objetosSinPrestamos;
-    }
 }

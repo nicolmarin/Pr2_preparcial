@@ -13,20 +13,46 @@
    <children>
       <SplitPane dividerPositions="0.5" layoutY="20.0" maxWidth="1242.0" orientation="VERTICAL" prefHeight="630.0" prefWidth="780.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="309.0" prefWidth="798.0">
+          <AnchorPane maxWidth="1243.0" minHeight="0.0" minWidth="0.0" prefHeight="650.0" prefWidth="780.0">
                <children>
-                  <Button fx:id="btnVerAsociados" layoutX="14.0" layoutY="65.0" mnemonicParsing="false" onAction="#onVerAsociados" prefHeight="25.0" prefWidth="107.0" style="-fx-background-radius: 50;" text="Ver Asociados" />
-                  <ListView fx:id="listObjetosA" layoutX="23.0" layoutY="138.0" prefHeight="145.0" prefWidth="220.0" />
-                  <TextField fx:id="txtCantidadClientesMayorPrestamos" layoutX="535.0" layoutY="69.0" prefHeight="40.0" prefWidth="90.0" promptText="Rango" style="-fx-background-radius: 50;" visible="false" />
-                  <Button fx:id="btnConsultarClientesMayorPrestamos2" layoutX="651.0" layoutY="77.0" mnemonicParsing="false" onAction="#onConsultarClientesMayorPrestamos" prefWidth="80.0" style="-fx-background-radius: 50;" text="Consultar" visible="false" />
-                  <ListView fx:id="listBuscarClientesMayorPrestamos" layoutX="552.0" layoutY="119.0" prefHeight="230.0" prefWidth="220.0" visible="false" />
-                  <SplitPane layoutX="1.0" layoutY="481.0" orientation="VERTICAL" prefHeight="351.0" prefWidth="1258.0" />
-                  <Label layoutX="63.0" layoutY="35.0" text="Objetos Prestamos">
+                  <Label layoutX="58.0" layoutY="14.0" text="Objetos Disponibles y No Disponibles">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="557.0" layoutY="35.0" text="Clientes Mayor prestamos" visible="false">
+                  <Button fx:id="btnConsultarObjetosXEstado" layoutX="291.0" layoutY="49.0" mnemonicParsing="false" onAction="#onConsultarObjetosXEstado" prefWidth="80.0" style="-fx-background-radius: 50;" text="Consultar" />
+                  <TextField fx:id="txtCantObjetosEstado" layoutX="151.0" layoutY="48.0" prefHeight="27.0" prefWidth="100.0" promptText="Cantidad" style="-fx-background-radius: 50;" />
+                  <TextField fx:id="txtNombre" layoutX="269.0" layoutY="48.0" prefHeight="27.0" prefWidth="100.0" promptText="Nombre" style="-fx-background-radius: 50;" visible="false" />
+                  <TextField fx:id="txtID" layoutX="386.0" layoutY="48.0" prefHeight="27.0" prefWidth="100.0" promptText="ID" style="-fx-background-radius: 50;" visible="false" />
+                  <TextField fx:id="txtEstado" layoutX="20.0" layoutY="48.0" prefHeight="27.0" prefWidth="100.0" promptText="Estado" style="-fx-background-radius: 50;" text="Disponible" />
+                  <Pane layoutX="302.0" layoutY="17.0" prefHeight="15.0" prefWidth="5.0" style="-fx-background-color: #b115df;" />
+                  <Pane layoutX="36.0" layoutY="32.0" prefHeight="5.0" prefWidth="700.0" style="-fx-background-color: #b115df;" />
+                   <ListView fx:id="listObjetos" layoutX="15.0" layoutY="89.0" prefHeight="216.0" prefWidth="372.0" />
+                  <ListView fx:id="listBuscarEmpleadosMayorPrestamos" layoutX="466.0" layoutY="95.0" prefHeight="186.0" prefWidth="220.0" />
+                  <Label layoutX="486.0" layoutY="7.0" text="Empleados Mayor prestamos">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtCantidadEmpleadosMayorPrestamos" layoutX="466.0" layoutY="43.0" prefHeight="40.0" prefWidth="107.0" promptText="Rango" style="-fx-background-radius: 50;" />
+                  <Button fx:id="btnConsultarEmpleadosMayorPrestamos" layoutX="586.0" layoutY="50.0" mnemonicParsing="false" onAction="#onConsultarEmpleadosMayorPrestamos" prefHeight="25.0" prefWidth="100.0" style="-fx-background-radius: 50;" text="Consultar" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="309.0" prefWidth="798.0">
+               <children>
+                   <TextField fx:id="txtRangoOMayorPrestamos" layoutX="34.0" layoutY="69.0" prefHeight="40.0" prefWidth="90.0" promptText="Rango" style="-fx-background-radius: 50;" />
+                  <Button fx:id="btnConsultarObjetosMayorPrestamos" layoutX="139.0" layoutY="76.0" mnemonicParsing="false" onAction="#onConsultarObjetosMayorPrestamos" prefWidth="80.0" style="-fx-background-radius: 50;" text="Consultar" />
+                  <ListView fx:id="listObjetosMayorPrestamos" layoutX="11.0" layoutY="125.0" prefHeight="230.0" prefWidth="220.0" />
+                  <TextField fx:id="txtCantidadClientesMayorPrestamos" layoutX="535.0" layoutY="69.0" prefHeight="40.0" prefWidth="90.0" promptText="Rango" style="-fx-background-radius: 50;" />
+                  <Button fx:id="btnConsultarClientesMayorPrestamos2" layoutX="651.0" layoutY="77.0" mnemonicParsing="false" onAction="#onConsultarClientesMayorPrestamos" prefWidth="80.0" style="-fx-background-radius: 50;" text="Consultar" />
+                  <ListView fx:id="listBuscarClientesMayorPrestamos" layoutX="552.0" layoutY="119.0" prefHeight="230.0" prefWidth="220.0" />
+                  <SplitPane layoutX="1.0" layoutY="481.0" orientation="VERTICAL" prefHeight="351.0" prefWidth="1258.0" />
+                  <Label layoutX="44.0" layoutY="35.0" text="Objetos Mayor prestamos">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="557.0" layoutY="35.0" text="Clientes Mayor prestamos">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -46,33 +72,6 @@
                   <Pane layoutX="39.0" layoutY="53.0" prefHeight="5.0" prefWidth="700.0" style="-fx-background-color: #b115df;" />
                   <Pane layoutX="246.0" layoutY="38.0" prefHeight="17.0" prefWidth="6.0" style="-fx-background-color: #b115df;" />
                   <Pane layoutX="515.0" layoutY="38.0" prefHeight="17.0" prefWidth="6.0" style="-fx-background-color: #b115df;" />
-                  <Button fx:id="btnVerNoAsociados" layoutX="133.0" layoutY="65.0" mnemonicParsing="false" onAction="#onVerNoAsociados" prefHeight="25.0" prefWidth="132.0" style="-fx-background-radius: 50;" text="Ver  no asociados" />
-                  <Button fx:id="btnVerTodos" layoutX="55.0" layoutY="97.0" mnemonicParsing="false" onAction="#onVerTodos" prefHeight="25.0" prefWidth="132.0" style="-fx-background-radius: 50;" text="Ver Todos" />
-               </children>
-            </AnchorPane>
-          <AnchorPane maxWidth="1243.0" minHeight="0.0" minWidth="0.0" prefHeight="650.0" prefWidth="780.0">
-               <children>
-                  <Label layoutX="58.0" layoutY="14.0" text="Objetos Disponibles y No Disponibles" visible="false">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="btnConsultarObjetosXEstado" layoutX="291.0" layoutY="49.0" mnemonicParsing="false" onAction="#onConsultarObjetosXEstado" prefWidth="80.0" style="-fx-background-radius: 50;" text="Consultar" visible="false" />
-                  <TextField fx:id="txtCantObjetosEstado" layoutX="151.0" layoutY="48.0" prefHeight="27.0" prefWidth="100.0" promptText="Cantidad" style="-fx-background-radius: 50;" visible="false" />
-                  <TextField fx:id="txtNombre" layoutX="269.0" layoutY="48.0" prefHeight="27.0" prefWidth="100.0" promptText="Nombre" style="-fx-background-radius: 50;" visible="false" />
-                  <TextField fx:id="txtID" layoutX="386.0" layoutY="48.0" prefHeight="27.0" prefWidth="100.0" promptText="ID" style="-fx-background-radius: 50;" visible="false" />
-                  <TextField fx:id="txtEstado" layoutX="20.0" layoutY="48.0" prefHeight="27.0" prefWidth="100.0" promptText="Estado" style="-fx-background-radius: 50;" text="Disponible" visible="false" />
-                  <Pane layoutX="302.0" layoutY="17.0" prefHeight="15.0" prefWidth="5.0" style="-fx-background-color: #b115df;" />
-                  <Pane layoutX="36.0" layoutY="32.0" prefHeight="5.0" prefWidth="700.0" style="-fx-background-color: #b115df;" />
-                   <ListView fx:id="listObjetos" layoutX="15.0" layoutY="89.0" prefHeight="216.0" prefWidth="372.0" visible="false" />
-                  <ListView fx:id="listBuscarEmpleadosMayorPrestamos" layoutX="466.0" layoutY="95.0" prefHeight="186.0" prefWidth="220.0" />
-                  <Label layoutX="486.0" layoutY="7.0" text="Empleados Mayor prestamos">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtCantidadEmpleadosMayorPrestamos" layoutX="466.0" layoutY="43.0" prefHeight="40.0" prefWidth="107.0" promptText="Rango" style="-fx-background-radius: 50;" />
-                  <Button fx:id="btnConsultarEmpleadosMayorPrestamos" layoutX="586.0" layoutY="50.0" mnemonicParsing="false" onAction="#onConsultarEmpleadosMayorPrestamos" prefHeight="25.0" prefWidth="100.0" style="-fx-background-radius: 50;" text="Consultar" />
                </children>
             </AnchorPane>
         </items>

@@ -193,19 +193,19 @@ public class DataUtil {
         prestamoObjeto.getListaObjetos().add(objeto6);
         prestamoObjeto.getListaObjetos().add(objetoSinPrestamo);  // Objeto sin préstamo
 
-        // Agregar clientes a ClienteObjeto
-        clienteObjeto.getListaClientes().add(cliente1);
-        clienteObjeto.getListaClientes().add(cliente2);
-        clienteObjeto.getListaClientes().add(cliente3);
-        clienteObjeto.getListaClientes().add(cliente4);
-        clienteObjeto.getListaClientes().add(cliente5);
-
         // Agregar clientes a PrestamoObjeto
         prestamoObjeto.getListaClientes().add(cliente1);
         prestamoObjeto.getListaClientes().add(cliente2);
         prestamoObjeto.getListaClientes().add(cliente3);
         prestamoObjeto.getListaClientes().add(cliente4);
         prestamoObjeto.getListaClientes().add(cliente5);
+
+        // Agregar clientes a PrestamoObjeto
+        clienteObjeto.getListaClientes().add(cliente1);
+        clienteObjeto.getListaClientes().add(cliente2);
+        clienteObjeto.getListaClientes().add(cliente3);
+        clienteObjeto.getListaClientes().add(cliente4);
+        clienteObjeto.getListaClientes().add(cliente5);
 
         // Agregar préstamos a PrestamoObjeto
         prestamoObjeto.getListaPrestamos().add(prestamo1);
