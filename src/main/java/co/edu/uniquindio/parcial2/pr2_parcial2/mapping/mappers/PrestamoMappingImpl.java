@@ -130,12 +130,12 @@ public class PrestamoMappingImpl implements IPrestamoMapping {
             return null;
         }
         return Empleado.builder()
-                .idEmpleado(empleadoDto.idEmpleado()) // Se asegura de asignar el ID correctamente
-                .nombre(empleadoDto.nombre()) // Asigna el nombre
-                .apellido(empleadoDto.apellido()) // Asigna el apellido
-                .cargo(empleadoDto.cargo()) // Asigna el cargo
-                .email(empleadoDto.email()) // Asigna el email (asegúrate de tener este en el DTO)
-                .telefono(empleadoDto.telefono()) // Asigna el teléfono (asegúrate de tener este en el DTO)
+                .idEmpleado(empleadoDto.idEmpleado())
+                .nombre(empleadoDto.nombre())
+                .apellido(empleadoDto.apellido())
+                .cargo(empleadoDto.cargo())
+                .email(empleadoDto.email())
+                .telefono(empleadoDto.telefono())
                 .build();
     }
 
@@ -146,12 +146,12 @@ public class PrestamoMappingImpl implements IPrestamoMapping {
             return null;
         }
         return new EmpleadoDto(
-                empleado.getIdEmpleado(), // Se asegura de asignar el ID correctamente
-                empleado.getNombre(), // Asigna el nombre
-                empleado.getApellido(), // Asigna el apellido
-                empleado.getCargo(), // Asigna el cargo
-                empleado.getEmail(), // Asigna el email
-                empleado.getTelefono() // Asigna el teléfono
+                empleado.getIdEmpleado(),
+                empleado.getNombre(),
+                empleado.getApellido(),
+                empleado.getCargo(),
+                empleado.getEmail(),
+                empleado.getTelefono()
         );
     }
 
@@ -199,20 +199,6 @@ public class PrestamoMappingImpl implements IPrestamoMapping {
                 .estado(objetoDto.estado())
                 .idObjeto(objetoDto.idObjeto())
                 .ownedByPrestamoUq(objetoDto.ownedByPrestamoUq())
-                .build();
-    }
-
-    // Convierte un objeto EmpleadoDto a un objeto Empleado
-    @Override
-    public Empleado empleadoDtoToEmpleado(EmpleadoDto empleadoDto) {
-        if (empleadoDto == null) {
-            return null;
-        }
-        return Empleado.builder()
-                .nombre(empleadoDto.nombre())
-                .apellido(empleadoDto.apellido())
-                .idEmpleado(empleadoDto.idEmpleado())
-                .cargo(empleadoDto.cargo())
                 .build();
     }
 }

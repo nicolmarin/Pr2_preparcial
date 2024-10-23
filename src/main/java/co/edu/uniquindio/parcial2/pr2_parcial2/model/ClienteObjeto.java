@@ -47,7 +47,6 @@ public class ClienteObjeto implements IClienteCrud {
         return false;
     }
     // Actualiza el cliente existente
-
     public void actualizarCliente(Cliente clienteActualizado) {
         if (clienteActualizado != null) {
             Cliente clienteExistente = obtenerCliente(clienteActualizado.getCedula());

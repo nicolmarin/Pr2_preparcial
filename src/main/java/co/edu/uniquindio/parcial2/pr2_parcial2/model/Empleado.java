@@ -6,8 +6,7 @@ public class Empleado extends Persona {
     private String idEmpleado;
     private String cargo;
     private PrestamoObjeto ownedByPrestamoUq;
-    public Empleado() {
-    }
+
     public Empleado(
             String idEmpleado,
             String nombre,

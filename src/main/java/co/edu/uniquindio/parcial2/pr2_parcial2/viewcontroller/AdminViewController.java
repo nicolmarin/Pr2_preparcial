@@ -254,7 +254,7 @@ public class AdminViewController {
             @Override
             protected void updateItem(EmpleadoDto item, boolean empty) {
                 super.updateItem(item, empty);
-                setText(empty || item == null ? null : "Empleado - ID: " + item.idEmpleado()+" Nombre: "+ item.nombre() + " Apellido: "+item.apellido()+ " Cargo: "+item.cargo()+" Email:"+ item.email()+".");
+                setText(empty || item == null ? null : "Empleado - ID: " + item.idEmpleado()+" Nombre: "+ item.nombre() + " Apellido: "+item.apellido()+ " Cargo: "+item.cargo()+" Email:"+ item.email()+ " Telefono: "+item.telefono()+".");
             }
         });
 
@@ -282,4 +282,5 @@ public class AdminViewController {
         }
         return true;
     }
+
 }
