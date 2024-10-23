@@ -1,12 +1,10 @@
 package co.edu.uniquindio.parcial2.pr2_parcial2.factory;
 
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ClienteDto;
+import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.EmpleadoDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ObjetoDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.mappers.PrestamoMappingImpl;
-import co.edu.uniquindio.parcial2.pr2_parcial2.model.Cliente;
-import co.edu.uniquindio.parcial2.pr2_parcial2.model.ClienteObjeto;
-import co.edu.uniquindio.parcial2.pr2_parcial2.model.Objeto;
-import co.edu.uniquindio.parcial2.pr2_parcial2.model.PrestamoObjeto;
+import co.edu.uniquindio.parcial2.pr2_parcial2.model.*;
 import co.edu.uniquindio.parcial2.pr2_parcial2.service.IModelFactoryService;
 import co.edu.uniquindio.parcial2.pr2_parcial2.service.IPrestamoMapping;
 import co.edu.uniquindio.parcial2.pr2_parcial2.utils.DataUtil;
@@ -116,4 +114,11 @@ public class ModelFactory implements IModelFactoryService {
         return mapper.getClientesDto(clientesConPrestamos);
     }
 
+    public List<EmpleadoDto> consultarEmpleadosMayorPrestamos(int rangoPrestamos) {
+        if (rangoPrestamos < 1) {
+            throw new IllegalArgumentException("El rango de préstamos debe ser mayor o igual a cero.");
+        }
+        List<Empleado> empleadosConPrestamos = prestamoObjeto.consultarEmpleadosMayorPrestamos(rangoPrestamos);
+        return mapper.getEmpleadosDto(empleadosConPrestamos);
+    }
 }

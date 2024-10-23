@@ -7,6 +7,7 @@ public abstract class Persona {
     private int edad;
 
 
+
     public Persona() {
     }
 

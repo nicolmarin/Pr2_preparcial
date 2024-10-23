@@ -2,7 +2,9 @@ package co.edu.uniquindio.parcial2.pr2_parcial2.viewcontroller;
 
 import co.edu.uniquindio.parcial2.pr2_parcial2.controller.AdminController;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ClienteDto;
+import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.EmpleadoDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ObjetoDto;
+import co.edu.uniquindio.parcial2.pr2_parcial2.model.Empleado;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,9 +19,49 @@ public class AdminViewController {
     private AdminController adminController;
     private final ObservableList<ObjetoDto> listaObjetos = FXCollections.observableArrayList();
     private final ObservableList<ClienteDto> listaClientesMayorPrestamos = FXCollections.observableArrayList();
+    private final ObservableList<EmpleadoDto> listaEmpleadosMayorPrestamos = FXCollections.observableArrayList();
     private final ObservableList<ObjetoDto> listaObjetosPorID = FXCollections.observableArrayList();
     private final ObservableList<ObjetoDto> listaObjetosMayorPrestamos = FXCollections.observableArrayList();
     private ObjetoDto objetoSeleccionado;
+
+
+
+    @FXML
+    private Button btnConsultarEmpleadosMayorPrestamos;
+
+    @FXML
+    private ListView<EmpleadoDto> listBuscarEmpleadosMayorPrestamos;
+
+
+    @FXML
+    private TextField txtCantidadEmpleadosMayorPrestamos;
+
+
+    @FXML
+    void onConsultarEmpleadosMayorPrestamos(ActionEvent event) {
+        consultarEmpleadosMayorPrestamos();
+    }
+
+    private void consultarEmpleadosMayorPrestamos() {
+        String cantidadTexto = txtCantidadEmpleadosMayorPrestamos.getText();
+        if (validarCampoNoVacio(cantidadTexto, BODY_INGRESE_CANTIDAD_CLIENTES)) {
+            try {
+                if (cantidadTexto.equals("0")) {
+                    mostrarMensaje("Rango no válido", HEADER_ERROR, "El valor del rango no puede ser 0.", Alert.AlertType.ERROR);
+                    return;
+                }
+                int cantidadPrestamos = Integer.parseInt(cantidadTexto);
+                listaEmpleadosMayorPrestamos.clear();
+                List<EmpleadoDto> empleados = adminController.consultarEmpleadosMayorPrestamos(cantidadPrestamos);
+                listaEmpleadosMayorPrestamos.setAll(FXCollections.observableArrayList(empleados));
+                listBuscarEmpleadosMayorPrestamos.setItems(listaEmpleadosMayorPrestamos);
+            } catch (NumberFormatException e) {
+                mostrarMensaje("Entrada no válida", HEADER_ERROR, BODY_NUMERO_NO_VALIDO, Alert.AlertType.ERROR);
+            }
+        } else {
+            mostrarMensaje(TITULO_OBJETO_INGRESE_VALOR, HEADER, BODY_INGRESE_RANGO, Alert.AlertType.INFORMATION);
+        }
+    }
 
     // ----------------------------- List Views -----------------------------
     @FXML
@@ -117,14 +159,9 @@ public class AdminViewController {
         }
     }
 
-
-
-
-
-    private void consultarClientesMayorPrestamos() {
+        private void consultarClientesMayorPrestamos() {
         String cantidadTexto = txtCantidadClientesMayorPrestamos.getText();
         if (validarCampoNoVacio(cantidadTexto, BODY_INGRESE_CANTIDAD_CLIENTES)) {
-
                 try {
                     if (cantidadTexto.equals("0")) {
                         mostrarMensaje("Rango no válido", HEADER_ERROR, "El valor del rango no puede ser 0.", Alert.AlertType.ERROR);
@@ -210,6 +247,14 @@ public class AdminViewController {
             protected void updateItem(ClienteDto item, boolean empty) {
                 super.updateItem(item, empty);
                 setText(empty || item == null ? null : "Cliente: " + item.nombreCliente());
+            }
+        });
+
+        listBuscarEmpleadosMayorPrestamos.setCellFactory(lv -> new ListCell<EmpleadoDto>() {
+            @Override
+            protected void updateItem(EmpleadoDto item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? null : "Empleado - ID: " + item.idEmpleado()+" Nombre: "+ item.nombre() + " Apellido: "+item.apellido()+ " Cargo: "+item.cargo()+" Email:"+ item.email()+".");
             }
         });
 

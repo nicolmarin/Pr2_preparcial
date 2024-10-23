@@ -26,6 +26,6 @@ public interface IPrestamoMapping {
     Empleado empleadoDtoToEmpleado(EmpleadoDto empleadoDto);
 
 
-
+    List<EmpleadoDto> getEmpleadosDto(List<Empleado> empleadosConPrestamos);
 }
 

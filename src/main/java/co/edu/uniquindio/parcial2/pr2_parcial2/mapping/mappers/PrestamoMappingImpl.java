@@ -15,6 +15,19 @@ import java.util.List;
 
 public class PrestamoMappingImpl implements IPrestamoMapping {
     // ------------------------------- Conversores de listas Dto -------------------------------
+
+    @Override
+    public List<EmpleadoDto> getEmpleadosDto(List<Empleado> listaEmpleados) {
+        if (listaEmpleados == null) {
+            return null;
+        }
+        List<EmpleadoDto> listaEmpleadosDto = new ArrayList<>(listaEmpleados.size());
+        for (Empleado empleado : listaEmpleados) {
+            listaEmpleadosDto.add(empleadoToEmpleadoDto(empleado));
+        }
+        return listaEmpleadosDto;
+    }
+
     // Convierte una lista de objetos Cliente a una lista de objetos ClienteDto
     @Override
     public List<ClienteDto> getClientesDto(List<Cliente> listaClientes) {
@@ -110,6 +123,22 @@ public class PrestamoMappingImpl implements IPrestamoMapping {
                 objeto.getEstado(),
                 objeto.getOwnedByPrestamoUq());
     }
+    // Convierte un objeto EmpleadoDto a un objeto Empleado
+    @Override
+    public Empleado empleadoDtoToEmpleado(EmpleadoDto empleadoDto) {
+        if (empleadoDto == null) {
+            return null;
+        }
+        return Empleado.builder()
+                .idEmpleado(empleadoDto.idEmpleado()) // Se asegura de asignar el ID correctamente
+                .nombre(empleadoDto.nombre()) // Asigna el nombre
+                .apellido(empleadoDto.apellido()) // Asigna el apellido
+                .cargo(empleadoDto.cargo()) // Asigna el cargo
+                .email(empleadoDto.email()) // Asigna el email (asegúrate de tener este en el DTO)
+                .telefono(empleadoDto.telefono()) // Asigna el teléfono (asegúrate de tener este en el DTO)
+                .build();
+    }
+
     // Convierte un objeto Empleado a un objeto EmpleadoDto
     @Override
     public EmpleadoDto empleadoToEmpleadoDto(Empleado empleado) {
@@ -117,12 +146,15 @@ public class PrestamoMappingImpl implements IPrestamoMapping {
             return null;
         }
         return new EmpleadoDto(
-                empleado.getNombre(),
-                empleado.getApellido(),
-                empleado.getIdEmpleado(),
-                empleado.getCargo(),
-                empleado.getCargo());
+                empleado.getIdEmpleado(), // Se asegura de asignar el ID correctamente
+                empleado.getNombre(), // Asigna el nombre
+                empleado.getApellido(), // Asigna el apellido
+                empleado.getCargo(), // Asigna el cargo
+                empleado.getEmail(), // Asigna el email
+                empleado.getTelefono() // Asigna el teléfono
+        );
     }
+
 
     // ------------------------------- Conversores de objetosDto a objetos -------------------------------
 

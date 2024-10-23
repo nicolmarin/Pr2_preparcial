@@ -17,9 +17,22 @@ public class DataUtil {
         PrestamoObjeto prestamoObjeto = new PrestamoObjeto();
 
         // ------------------- Instancias de Empleado -------------------
-        Empleado empleado1 = new Empleado("E001", "Laura", "Gomez", "Bibliotecaria", "laura@biblioteca.com", "123456789");
-        Empleado empleado2 = new Empleado("E002", "Carlos", "Ruiz", "Asistente", "carlos@biblioteca.com", "987654321");
-
+        Empleado empleado1 = Empleado.builder()
+                .idEmpleado("E001")
+                .nombre("Laura")
+                .apellido("Gomez")
+                .cargo("Bibliotecaria")
+                .email("laura@biblioteca.com")
+                .telefono("123456789")
+                .build();
+        Empleado empleado2 = Empleado.builder()
+                .idEmpleado("E002")
+                .nombre("Carlos")
+                .apellido("Ruiz")
+                .cargo("Asistente")
+                .email("carlos@biblioteca.com")
+                .telefono("987654321")
+                .build();
         // ------------------- Instancias de Cliente -------------------
         Cliente cliente1 = Cliente.builder()
                 .cedula("1094")
@@ -161,6 +174,9 @@ public class DataUtil {
                 .build();
 
 
+        // Agregar objetos a PrestamoObjeto
+        prestamoObjeto.getListaEmpleados().add(empleado1);
+        prestamoObjeto.getListaEmpleados().add(empleado2);
         // Agregar objetos a PrestamoObjeto
         prestamoObjeto.getListaObjetos().add(objeto1);
         prestamoObjeto.getListaObjetos().add(objeto2);

@@ -143,36 +143,14 @@ public class PrestamoObjeto extends Objeto {
         }
         return clientesFiltrados;
     }
-
-//    // Método para crear un nuevo préstamo
-//    public boolean crearPrestamo(String numeroPrestamo, Date fechaPrestamo, Date fechaEntrega, String descripcion, String clienteCedula, List<String> objetosIds) {
-//        Cliente cliente = obtenerCliente(clienteCedula);
-//        if (cliente == null) {
-//            return false;
-//        }
-//
-//        List<Objeto> objetosPrestamo = new ArrayList<>();
-//        for (String id : objetosIds) {
-//            Objeto objeto = obtenerObjeto(id);
-//            if (objeto != null) {
-//                objetosPrestamo.add(objeto);
-//            }
-//        }
-//
-//        if (!objetosPrestamo.isEmpty()) {
-//            Prestamo nuevoPrestamo = Prestamo.builder()
-//                    .numeroPrestamo(numeroPrestamo)
-//                    .fechaPrestamo(fechaPrestamo)
-//                    .fechaEntrega(fechaEntrega)
-//                    .descripcion(descripcion)
-//                    .clienteAsociado(cliente)
-//                    .empleadoAsociado(null)
-//                    .listaObjetosAsociados(objetosPrestamo)
-//                    .build();
-//            listaPrestamos.add(nuevoPrestamo);
-//            return true;
-//        }
-//        return false;
-//    }
-
+    // Consulta empleados con mayor cantidad de préstamos
+    public List<Empleado> consultarEmpleadosMayorPrestamos(int cantidadPrestamos) {
+        List<Empleado> empleadosFiltrados = new ArrayList<>();
+        for (Empleado empleado : listaEmpleados) {
+            if (prestamos.getPrestamosPorEmpleado(empleado) >= cantidadPrestamos) {
+                empleadosFiltrados.add(empleado);
+            }
+        }
+        return empleadosFiltrados;
+    }
 }

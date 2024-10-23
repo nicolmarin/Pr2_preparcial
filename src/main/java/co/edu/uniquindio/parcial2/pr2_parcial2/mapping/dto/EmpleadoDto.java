@@ -5,7 +5,8 @@ public record EmpleadoDto(
         String nombre,
         String apellido,
         String cargo,
-        String email
+        String email,
+        String telefono
 ) {
 }
 

@@ -26,6 +26,9 @@ public class ObjetoBuilder {
         return this;
     }
     public Objeto build() {
-        return new Objeto(nombre, idObjeto,ownedByPrestamoUq,estado);
+        return new Objeto(nombre,
+                idObjeto,
+                ownedByPrestamoUq,
+                estado);
     }
 }

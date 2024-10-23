@@ -47,5 +47,8 @@ public class Empleado extends Persona {
     public void setOwnedByPrestamoUq(PrestamoObjeto ownedByPrestamoUq) {
         this.ownedByPrestamoUq = ownedByPrestamoUq;
     }
+
+
+
 }
 

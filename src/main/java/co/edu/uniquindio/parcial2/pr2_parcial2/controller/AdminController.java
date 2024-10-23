@@ -2,6 +2,7 @@ package co.edu.uniquindio.parcial2.pr2_parcial2.controller;
 
 import co.edu.uniquindio.parcial2.pr2_parcial2.factory.ModelFactory;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ClienteDto;
+import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.EmpleadoDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ObjetoDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.utils.AdminConstantes;
 
@@ -58,5 +59,13 @@ public class AdminController {
             return List.of();
         }
         return modelFactory.consultarClientesMayorPrestamos(rangoPrestamos);
+    }
+
+    public List<EmpleadoDto> consultarEmpleadosMayorPrestamos(int rangoPrestamos) {
+        if (rangoPrestamos < 1) {
+            System.out.println("Rango inválido: El rango de préstamos debe ser mayor o igual a cero.");
+            return List.of();
+        }
+        return modelFactory.consultarEmpleadosMayorPrestamos(rangoPrestamos);
     }
 }
