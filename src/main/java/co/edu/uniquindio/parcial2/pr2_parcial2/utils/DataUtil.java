@@ -33,6 +33,7 @@ public class DataUtil {
                 .email("carlos@biblioteca.com")
                 .telefono("987654321")
                 .build();
+
         // ------------------- Instancias de Cliente -------------------
         Cliente cliente1 = Cliente.builder()
                 .cedula("1094")
@@ -116,6 +117,13 @@ public class DataUtil {
                 .estado("No Disponible")
                 .build();
 
+        // ------------------- Sin Préstamo -------------------
+        Objeto objetoSinPrestamo = Objeto.builder()
+                .nombre("Libro sin préstamo")
+                .idObjeto("007")
+                .estado("Disponible")
+                .ownedByPrestamoUq(null)  // Sin asociación a préstamo
+                .build();
 
         // ------------------- Instancias de Prestamo -------------------
         // Préstamo 1 - con un solo objeto
@@ -164,7 +172,7 @@ public class DataUtil {
                 .build();
 
         Prestamo prestamo4 = Prestamo.builder()
-                .numeroPrestamo("003")
+                .numeroPrestamo("004")
                 .fechaPrestamo(new Date())
                 .fechaEntrega(new Date())
                 .descripcion("Préstamo de varios libros")
@@ -173,10 +181,12 @@ public class DataUtil {
                 .listaObjetosAsociados(objetosPrestamo3)
                 .build();
 
+        // ------------------- Agregar datos a PrestamoObjeto -------------------
 
-        // Agregar objetos a PrestamoObjeto
+        // Agregar empleados a PrestamoObjeto
         prestamoObjeto.getListaEmpleados().add(empleado1);
         prestamoObjeto.getListaEmpleados().add(empleado2);
+
         // Agregar objetos a PrestamoObjeto
         prestamoObjeto.getListaObjetos().add(objeto1);
         prestamoObjeto.getListaObjetos().add(objeto2);
@@ -184,6 +194,7 @@ public class DataUtil {
         prestamoObjeto.getListaObjetos().add(objeto4);
         prestamoObjeto.getListaObjetos().add(objeto5);
         prestamoObjeto.getListaObjetos().add(objeto6);
+        prestamoObjeto.getListaObjetos().add(objetoSinPrestamo);  // Objeto sin préstamo
 
         // Agregar clientes a PrestamoObjeto
         prestamoObjeto.getListaClientes().add(cliente1);
@@ -199,5 +210,6 @@ public class DataUtil {
         prestamoObjeto.getListaPrestamos().add(prestamo4);
 
         return prestamoObjeto;
+        
     }
 }
