@@ -20,9 +20,10 @@ public class AdminViewController {
     private final ObservableList<ObjetoDto> listaObjetos = FXCollections.observableArrayList();
     private final ObservableList<ClienteDto> listaClientesMayorPrestamos = FXCollections.observableArrayList();
     private final ObservableList<EmpleadoDto> listaEmpleadosMayorPrestamos = FXCollections.observableArrayList();
-    private final ObservableList<ObjetoDto> listaObjetosPorID = FXCollections.observableArrayList();
+    private final ObservableList<ClienteDto> listaClientesPorCedula = FXCollections.observableArrayList();
     private final ObservableList<ObjetoDto> listaObjetosMayorPrestamos = FXCollections.observableArrayList();
     private ObjetoDto objetoSeleccionado;
+    private ClienteDto clienteSeleccionado;
 
 
 
@@ -69,7 +70,7 @@ public class AdminViewController {
     @FXML
     private ListView<ClienteDto> listBuscarClientesMayorPrestamos;
     @FXML
-    private ListView<ObjetoDto> listBuscarPorID;
+    private ListView<ClienteDto> listBuscarPorCedula;
     @FXML
     private ListView<ObjetoDto> listObjetosMayorPrestamos;
 
@@ -83,7 +84,7 @@ public class AdminViewController {
     @FXML
     private TextField txtRangoOMayorPrestamos;
     @FXML
-    private TextField txtBuscarObjetoID;
+    private TextField txtBuscarClientePorCedula;
     @FXML
     private TextField txtCantidadClientesMayorPrestamos;
 
@@ -91,7 +92,7 @@ public class AdminViewController {
     @FXML
     private Button btnConsultarObjetosMayorPrestamos;
     @FXML
-    private Button btnConsultarObjetosID;
+    private Button btnConsultarClientePorCedula;
     @FXML
     private Button btnConsultarObjetosXEstado;
     @FXML
@@ -114,20 +115,20 @@ public class AdminViewController {
     }
 
     @FXML
-    void onConsultarObjetosID(ActionEvent event) {
-        consultarObjetoPorID();
+    void onConsultarClientesCedula(ActionEvent event) {
+        consultarClientePorCedula();
     }
 
     //-------------------------------------------------------------------
-    private void consultarObjetoPorID() {
-        String id = txtBuscarObjetoID.getText();
-        if (validarCampoNoVacio(id, TITULO_OBJETO_INGRESE_VALOR)) {
+    private void consultarClientePorCedula() {
+        String cedula = txtBuscarClientePorCedula.getText();
+        if (validarCampoNoVacio(cedula, TITULO_OBJETO_INGRESE_VALOR)) {
             try {
-                ObjetoDto objetoDto = adminController.consultarObjetoPorID(id);
-                if (objetoDto != null) {
-                    listaObjetosPorID.add(objetoDto);
-                    listBuscarPorID.setItems(listaObjetosPorID);
-                    mostrarMensaje("Objeto Encontrado", "Información", objetoDto.toString(), Alert.AlertType.INFORMATION);
+                ClienteDto clienteDto = adminController.consultarClientePorCedula(cedula);
+                if (clienteDto != null) {
+                    listaClientesPorCedula.add(clienteDto);
+                    listBuscarPorCedula.setItems(listaClientesPorCedula);
+                    mostrarMensaje("Objeto Encontrado", "Información", clienteDto.toString(), Alert.AlertType.INFORMATION);
                 }
             } catch (IllegalArgumentException e) {
                 mostrarMensaje(TITULO_OBJETO_NO_ENCONTRADO, HEADER, BODY_ID_NO_ENCONTRADO, Alert.AlertType.ERROR);
@@ -234,11 +235,11 @@ public class AdminViewController {
             }
         });
 
-        listBuscarPorID.setCellFactory(lv -> new ListCell<ObjetoDto>() {
+        listBuscarPorCedula.setCellFactory(lv -> new ListCell<ClienteDto>() {
             @Override
-            protected void updateItem(ObjetoDto item, boolean empty) {
+            protected void updateItem(ClienteDto item, boolean empty) {
                 super.updateItem(item, empty);
-                setText(empty || item == null ? null : "ID: " + item.idObjeto() + " - Nombre: " + item.nombre());
+                setText(empty || item == null ? null : "ID: " + item.cedula() + " - Nombre: " + item.nombreCliente());
             }
         });
 

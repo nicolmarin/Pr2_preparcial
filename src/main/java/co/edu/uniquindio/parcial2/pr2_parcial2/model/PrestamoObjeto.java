@@ -124,10 +124,10 @@ public class PrestamoObjeto extends Objeto {
 
 
     // Método para consultar un objeto por su ID
-    public Objeto consultarObjetoPorID(String idObjeto) {
-        for (Objeto objeto : listaObjetos) {
-            if (objeto.getIdObjeto().equalsIgnoreCase(idObjeto)) {
-                return objeto;
+    public Cliente consultarClientePorCedula(String cedula) {
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getCedula().equalsIgnoreCase(cedula)) {
+                return cliente;
             }
         }
         return null;
@@ -153,4 +153,6 @@ public class PrestamoObjeto extends Objeto {
         }
         return empleadosFiltrados;
     }
+
+
 }

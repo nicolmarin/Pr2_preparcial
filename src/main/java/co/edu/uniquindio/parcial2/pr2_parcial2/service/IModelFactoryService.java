@@ -20,4 +20,5 @@ public interface IModelFactoryService {
     List<ClienteDto> consultarClientesMayorPrestamos(int rangoPrestamos);
     List<ObjetoDto> obtenerObjetos();
     boolean agregarObjeto(ObjetoDto objetoDto);
+    ClienteDto consultarClientePorCedula(String cedula);
 }

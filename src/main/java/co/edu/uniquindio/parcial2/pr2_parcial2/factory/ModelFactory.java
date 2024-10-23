@@ -121,4 +121,12 @@ public class ModelFactory implements IModelFactoryService {
         List<Empleado> empleadosConPrestamos = prestamoObjeto.consultarEmpleadosMayorPrestamos(rangoPrestamos);
         return mapper.getEmpleadosDto(empleadosConPrestamos);
     }
+
+    public ClienteDto consultarClientePorCedula(String cedula) {
+        Cliente cliente = clienteObjeto.obtenerCliente(cedula); // Busca el cliente en el sistema
+        if (cliente != null) {
+            return mapper.clienteToClienteDto(cliente); // Convierte el cliente a DTO si es encontrado
+        }
+        return null; // Retorna null si no se encuentra el cliente
+    }
 }

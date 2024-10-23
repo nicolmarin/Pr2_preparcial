@@ -96,5 +96,7 @@ public class Cliente {
     public void setEdad(int edad) {
         this.edad = edad;
     }
+
+
     // ---------------------------------------------------------------------------------------------
 }
