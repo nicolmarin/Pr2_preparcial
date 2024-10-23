@@ -4,6 +4,7 @@ import co.edu.uniquindio.parcial2.pr2_parcial2.factory.ModelFactory;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ClienteDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.EmpleadoDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ObjetoDto;
+import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.mappers.PrestamoMappingImpl;
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.Cliente;
 import co.edu.uniquindio.parcial2.pr2_parcial2.model.ClienteObjeto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.utils.AdminConstantes;
@@ -12,10 +13,13 @@ import java.util.List;
 
 public class AdminController {
     private final ModelFactory modelFactory;
+    private ClienteObjeto clienteObjeto;
+    private PrestamoMappingImpl mapper;
 
     public AdminController() {
         modelFactory = ModelFactory.getInstancia();
-        ClienteObjeto = clienteobjeto.getInstancia();
+        this.clienteObjeto = new ClienteObjeto();
+        this.mapper = new PrestamoMappingImpl();
     }
 
     // Obtiene la lista de objetos
