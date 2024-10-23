@@ -63,9 +63,9 @@
                   </Label>
                   <Pane layoutX="266.0" layoutY="35.0" prefHeight="336.0" prefWidth="253.0">
                      <children>
-                        <ListView fx:id="listBuscarPorID" layoutX="-4.0" layoutY="85.0" prefHeight="230.0" prefWidth="251.0" />
-                        <TextField fx:id="txtBuscarObjetoID" layoutX="9.0" layoutY="34.0" prefHeight="40.0" prefWidth="90.0" promptText="Ingrese ID objeto" style="-fx-background-radius: 50;" />
-                        <Button fx:id="btnConsultarObjetosID" layoutX="127.0" layoutY="42.0" mnemonicParsing="false" onAction="#onConsultarObjetosID" prefWidth="80.0" style="-fx-background-radius: 50;" text="Consultar" />
+                        <ListView fx:id="listBuscarPorCedula" layoutX="-4.0" layoutY="85.0" prefHeight="230.0" prefWidth="251.0" />
+                        <TextField fx:id="txtBuscarClientePorCedula" layoutX="9.0" layoutY="34.0" prefHeight="40.0" prefWidth="90.0" promptText="Ingrese ID objeto" style="-fx-background-radius: 50;" />
+                        <Button fx:id="btnConsultarClientePorCedula" layoutX="127.0" layoutY="42.0" mnemonicParsing="false" onAction="#onConsultarObjetosID" prefWidth="80.0" style="-fx-background-radius: 50;" text="Consultar" />
                         <Label layoutX="54.0" text="Buscar Cliente por ID">
                             <font>
                               <Font size="14.0" />

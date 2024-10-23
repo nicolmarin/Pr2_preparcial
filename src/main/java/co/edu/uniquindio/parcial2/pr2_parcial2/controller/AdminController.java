@@ -4,6 +4,8 @@ import co.edu.uniquindio.parcial2.pr2_parcial2.factory.ModelFactory;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ClienteDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.EmpleadoDto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.mapping.dto.ObjetoDto;
+import co.edu.uniquindio.parcial2.pr2_parcial2.model.Cliente;
+import co.edu.uniquindio.parcial2.pr2_parcial2.model.ClienteObjeto;
 import co.edu.uniquindio.parcial2.pr2_parcial2.utils.AdminConstantes;
 
 import java.util.List;
@@ -13,6 +15,7 @@ public class AdminController {
 
     public AdminController() {
         modelFactory = ModelFactory.getInstancia();
+        ClienteObjeto = clienteobjeto.getInstancia();
     }
 
     // Obtiene la lista de objetos
@@ -43,14 +46,16 @@ public class AdminController {
     }
 
 
-    // Consulta un objeto por su ID
-    public ObjetoDto consultarObjetoPorID(String idObjeto) {
-        ObjetoDto objeto = modelFactory.consultarObjetoPorID(idObjeto);
-        if (objeto == null) {
-            throw new IllegalArgumentException(AdminConstantes.BODY_ID_NO_ENCONTRADO);
-        }
-        return objeto;
-    }
+//    // Consulta un cliente por su ID
+//    public ClienteDto consultarClientePorCedula(String cedula) {
+//        ClienteDto cliente= modelFactory.consultarClientePorCedula(cedula);
+//        if (cliente == null) {
+//            throw new IllegalArgumentException(AdminConstantes.BODY_ID_NO_ENCONTRADO);
+//        }
+//        return cliente;
+//    }
+
+
 
     // Consulta clientes con mayor cantidad de préstamos
     public List<ClienteDto> consultarClientesMayorPrestamos(int rangoPrestamos) {
@@ -67,5 +72,17 @@ public class AdminController {
             return List.of();
         }
         return modelFactory.consultarEmpleadosMayorPrestamos(rangoPrestamos);
+    }
+
+    public ClienteDto consultarClientePorCedula(String cedula) {
+        if (cedula == null || cedula.isEmpty()) {
+            throw new IllegalArgumentException("El ID del objeto no puede estar vacío.");
+        }
+        Cliente cliente = clienteObjeto.consultarClientePorCedula(cedula);
+        if (cliente != null) {
+            return mapper.clienteToClienteDto(cliente);
+        } else {
+            throw new IllegalArgumentException("No se encontró ningún objeto con el ID proporcionado.");
+        }
     }
 }

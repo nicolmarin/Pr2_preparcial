@@ -7,18 +7,7 @@ import java.util.List;
 
 public class ClienteController {
     ModelFactory modelFactory;
-    public ClienteDto buscarClientePorCedula(String cedula) {
-        // Llama al método del modelo para obtener el cliente
-        ClienteDto clienteDto = modelFactory.buscarClientePorCedula(cedula);
 
-        // Verifica si el cliente fue encontrado
-        if (clienteDto != null) {
-            return clienteDto;
-        } else {
-            System.out.println("Cliente no encontrado con la cédula: " + cedula);
-            return null;
-        }
-    }
 
     public ClienteController() {
         modelFactory = ModelFactory.getInstancia();

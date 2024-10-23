@@ -91,18 +91,7 @@ public class ModelFactory implements IModelFactoryService {
 
 
     // Consultar un objeto por ID
-    @Override
-    public ObjetoDto consultarObjetoPorID(String idObjeto) {
-        if (idObjeto == null || idObjeto.isEmpty()) {
-            throw new IllegalArgumentException("El ID del objeto no puede estar vacío.");
-        }
-        Objeto objeto = prestamoObjeto.consultarObjetoPorID(idObjeto);
-        if (objeto != null) {
-            return mapper.objetoToObjetoDto(objeto);
-        } else {
-            throw new IllegalArgumentException("No se encontró ningún objeto con el ID proporcionado.");
-        }
-    }
+
 
     // Consultar clientes con mayor cantidad de préstamos
     @Override
@@ -122,11 +111,18 @@ public class ModelFactory implements IModelFactoryService {
         return mapper.getEmpleadosDto(empleadosConPrestamos);
     }
 
+
+
+    @Override
     public ClienteDto consultarClientePorCedula(String cedula) {
-        Cliente cliente = clienteObjeto.obtenerCliente(cedula); // Busca el cliente en el sistema
-        if (cliente != null) {
-            return mapper.clienteToClienteDto(cliente); // Convierte el cliente a DTO si es encontrado
+        if (cedula == null || cedula.isEmpty()) {
+            throw new IllegalArgumentException("El ID del objeto no puede estar vacío.");
         }
-        return null; // Retorna null si no se encuentra el cliente
+        Cliente cliente = clienteObjeto.consultarClientePorCedula(cedula);
+        if (cliente != null) {
+            return mapper.clienteToClienteDto(cliente);
+        } else {
+            throw new IllegalArgumentException("No se encontró ningún objeto con el ID proporcionado.");
+        }
     }
 }

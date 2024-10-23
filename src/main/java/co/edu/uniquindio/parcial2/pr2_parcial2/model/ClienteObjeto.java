@@ -86,4 +86,13 @@ public class ClienteObjeto implements IClienteCrud {
     public void setListaClientes(List<Cliente> listaClientes) {
         this.listaClientes = listaClientes;
     }
+
+    public Cliente consultarClientePorCedula(String cedula) {
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getCedula().equalsIgnoreCase(cedula)) {
+                return cliente;
+            }
+        }
+        return null;
+    }
 }

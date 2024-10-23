@@ -16,7 +16,7 @@ public interface IModelFactoryService {
 
     List<ObjetoDto> consultarObjetosPorEstado(String estado);
     List<ObjetoDto> consultarObjetosMayorPrestamos(int rangoPrestamos);
-    ObjetoDto consultarObjetoPorID(String idObjeto);
+
     List<ClienteDto> consultarClientesMayorPrestamos(int rangoPrestamos);
     List<ObjetoDto> obtenerObjetos();
     boolean agregarObjeto(ObjetoDto objetoDto);
