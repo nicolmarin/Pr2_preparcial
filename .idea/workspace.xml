@@ -5,41 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4181a8c6-de37-4202-b2a8-ca059425fb7e" name="Changes" comment="Se crea proyecto JavaFx para el parcial 2">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PatronesDiseño/Factory/BicicletaFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PatronesDiseño/Factory/CocheFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PatronesDiseño/Factory/LavadoraFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PatronesDiseño/Factory/MotocicletaFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PatronesDiseño/Factory/ProductoFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PatronesDiseño/Factory/RefrigeradorFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PatronesDiseño/Factory/TelevisionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PatronesDiseño/MainFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PatronesDiseño/Model/Bicicleta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PatronesDiseño/Model/Coche.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PatronesDiseño/Model/Lavadora.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PatronesDiseño/Model/Motocicleta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PatronesDiseño/Model/Refrigerador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PatronesDiseño/Model/Television.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/PatronesDiseño/Service/Producto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DIagramasDeClases/CentroDeportibo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DIagramasDeClases/EmpresaTransporte.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DIagramasDeClases/Hotel.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DIagramasDeClases/PrestamoUQ.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/Adapter/Captura de pantalla 2024-10-22 101622.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/Adapter/MainPaypal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/Adapter/model/AdaptadorPasarela.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/Adapter/model/PagoHeredadoImple.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/Adapter/model/PayPalApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/Adapter/services/PagoHeredado.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/Adapter/services/PasarelaPago.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/FactoryMethod/Negocio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/FactoryMethod/factory/FabricaEmpleado.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/FactoryMethod/factory/FabricaEmpleadoPermanente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/FactoryMethod/factory/FabricaEmpleadoTemporal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/FactoryMethod/model/Empleado.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/FactoryMethod/model/EmpleadoPermanente.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/FactoryMethod/model/EmpleadoTemporal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/Prototype/VehiculoPrototype.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/Prototype/model/AutoCasual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/Prototype/model/AutoDeportivo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/Prototype/model/Vehiculo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/Prototype/services/IVehiculo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/facade/CineFacade.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/facade/ClienteCine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/facade/model/Asiento.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/facade/model/Boleto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/facade/model/Combo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/facade/model/Sala.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/facade/servicios/AsientoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/facade/servicios/BoletoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/facade/servicios/ComidaService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PatronesDeDiseño/facade/servicios/SalaService.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,8 +31,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -177,7 +158,7 @@
       <workItem from="1729642441963" duration="278000" />
       <workItem from="1729642746910" duration="609000" />
       <workItem from="1729643386859" duration="1630000" />
-      <workItem from="1729645794672" duration="3126000" />
+      <workItem from="1729645794672" duration="5204000" />
     </task>
     <task id="LOCAL-00001" summary="Se crea proyecto JavaFx para el parcial 2">
       <option name="closed" value="true" />
